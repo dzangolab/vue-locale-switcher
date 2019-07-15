@@ -1,0 +1,150 @@
+<template>
+  <div
+    class="locale-switcher">
+    <a
+      @mouseenter="expanded = true"
+      @click="expanded = !expanded"
+      :class="getClassForLocale()"
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="locale"
+      href="#"
+      role="button"
+    >
+      {{ locale }}
+    </a>
+    <ul
+      @mouseout="expanded = !expanded"
+      :class="getClassForDropdown()"
+      tabindex="-1"
+    >
+      <Link
+        :active="locale === l.code"
+        :label="l.name"
+        :route="getRouteForLocale(l.code)"
+        :ssr="ssr"
+        :key="l.code"
+        v-for="l in locales"
+        role="menuitem"
+      />
+    </ul>
+  </div>
+</template>
+
+<script>
+import Link from './Link'
+
+export default {
+  components: {
+    Link
+  },
+
+  created () {
+    this.routes = false
+  },
+
+  data () {
+    return {
+      expanded: false,
+      routes: {
+        en: 0,
+        fr: 0
+      }
+    }
+  },
+
+  methods: {
+    getClassForDropdown () {
+      let cls = ''
+
+      if (this.theme === 'bootstrap') {
+        cls = 'dropdown-menu dropdown-menu-right'
+        cls = cls + (this.expanded ? ' show' : '')
+      }
+
+      return cls
+    },
+
+    getClassForLocale () {
+      let cls = ''
+
+      if (this.theme === 'bootstrap') {
+        cls = 'nav-link'
+      }
+
+      return cls + (this.expanded ? ' hover' : '')
+    },
+
+    getRouteForLocale (locale) {
+      let route = '#'
+
+      console.log(this.routes)
+
+      if (this.routes[locale]) {
+        route = this.routes[locale]
+      } else {
+        let name = this.$route.name
+        let i = name.lastIndexOf('_')
+
+        route = name.slice(0, i) + '_' + locale
+      }
+
+      return this.$router.resolve({
+        name: route
+      })
+    }
+  },
+
+  props: {
+    locale: {
+      required: true,
+      type: String
+    },
+    locales: {
+      required: true,
+      type: Array
+    },
+    ssr: {
+      default: false,
+      type: Boolean
+    },
+    theme: {
+      default: 'bootstrap',
+      type: String
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+div.locale-switcher {
+  position: relative;
+
+  a {
+    &.locale {
+      border-radius: 50%;
+      display: none;
+      height: 3rem;
+      line-height: 2rem;
+      text-align: center;
+      width: 3rem;
+
+      @media (min-width: 968px) {
+        display: block;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    top: 110%;
+
+    @media (max-width: 967px) {
+      border: none;
+      border-top: 1px solid #edf5ff;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+}
+</style>
