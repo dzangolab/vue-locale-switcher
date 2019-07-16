@@ -38,11 +38,7 @@ export default {
     },
 
     href () {
-      if (!this.ssr) {
-        return '#'
-      } else {
-        return this.route.href
-      }
+      return this.route.href
     }
   },
 
@@ -52,12 +48,7 @@ export default {
         return
       }
 
-      if (this.ssr) {
-        window.location = this.href
-      } else {
-        this.$emit('update:locale', this.locale)
-        // this.$router.push(this.route)
-      }
+      window.location = this.href
     }
   },
 
@@ -73,10 +64,6 @@ export default {
     route: {
       required: true,
       type: [Object, String]
-    },
-    ssr: {
-      default: false,
-      type: Boolean
     },
     theme: {
       default: 'bootstrap',

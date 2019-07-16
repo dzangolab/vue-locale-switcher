@@ -22,7 +22,6 @@
         :active="locale === l.code"
         :label="l.name"
         :route="getRouteForLocale(l.code)"
-        :ssr="ssr"
         :key="l.code"
         v-for="l in locales"
         role="menuitem"
@@ -32,6 +31,7 @@
 </template>
 
 <script>
+import EventBus from '@/event-bus'
 import Link from './Link'
 
 export default {
@@ -105,10 +105,6 @@ export default {
     locales: {
       required: true,
       type: Array
-    },
-    ssr: {
-      default: false,
-      type: Boolean
     },
     theme: {
       default: 'bootstrap',
