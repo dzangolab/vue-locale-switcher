@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import EventBus from '@/event-bus'
 import Link from './Link'
 
 export default {
