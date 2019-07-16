@@ -55,7 +55,8 @@ export default {
       if (this.ssr) {
         window.location = this.href
       } else {
-        this.$router.push(this.route)
+        this.$emit('update:locale', this.locale)
+        // this.$router.push(this.route)
       }
     }
   },

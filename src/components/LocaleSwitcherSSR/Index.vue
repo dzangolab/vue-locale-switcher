@@ -41,6 +41,10 @@ export default {
 
   created () {
     this.routes = false
+
+    EventBus.$on('localeswitcher:init', routes => {
+      this.routes = routes
+    })
   },
 
   data () {
@@ -77,8 +81,6 @@ export default {
 
     getRouteForLocale (locale) {
       let route = '#'
-
-      console.log(this.routes)
 
       if (this.routes[locale]) {
         route = this.routes[locale]

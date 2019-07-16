@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <LocaleSwitcher
+      @changeLocale="changeLocale"
       :locale="locale"
       :locales="locales"
-      :ssr="false"
     />
   </div>
 </template>
 
 <script>
-import LocaleSwitcher from './components/LocaleSwitcher.vue'
+import LocaleSwitcher from './components/LocaleSwitcher/Index.vue'
 
 export default {
   name: 'app',
@@ -28,8 +28,18 @@ export default {
         {
           code: 'fr',
           name: 'Français'
+        },
+        {
+          code: 'th',
+          name: 'ภาษาไทย'
         }
       ]
+    }
+  },
+
+  methods: {
+    changeLocale (locale) {
+      this.locale = locale
     }
   }
 }
