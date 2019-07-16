@@ -39,21 +39,9 @@ export default {
     Link
   },
 
-  created () {
-    this.routes = false
-
-    EventBus.$on('localeswitcher:init', routes => {
-      this.routes = routes
-    })
-  },
-
   data () {
     return {
       expanded: false,
-      routes: {
-        en: 0,
-        fr: 0
-      }
     }
   },
 
@@ -82,14 +70,10 @@ export default {
     getRouteForLocale (locale) {
       let route = '#'
 
-      if (this.routes[locale]) {
-        route = this.routes[locale]
-      } else {
-        let name = this.$route.name
-        let i = name.lastIndexOf('_')
+      let name = this.$route.name
+      let i = name.lastIndexOf('_')
 
-        route = name.slice(0, i) + '_' + locale
-      }
+      route = name.slice(0, i) + '_' + locale
 
       return this.$router.resolve({
         name: route
