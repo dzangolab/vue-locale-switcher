@@ -1,6 +1,6 @@
 <template>
   <li
-    @click="selectLocale(locale)"
+    @click.prevent="selectLocale(locale)"
     :exact="true"
     :class="active ? 'active' : ''"
   >

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import LocaleSwitcher from './components/LocaleSwitcher/Index.vue'
+import { LocaleSwitcher } from './components/index'
 
 export default {
   name: 'app',
