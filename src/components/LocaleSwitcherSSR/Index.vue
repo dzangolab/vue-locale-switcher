@@ -97,6 +97,8 @@ export default {
     }
   },
 
+  name: 'LocaleSwitcherSSR',
+
   props: {
     locale: {
       required: true,

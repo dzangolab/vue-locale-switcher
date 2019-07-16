@@ -41,7 +41,7 @@ export default {
 
   data () {
     return {
-      expanded: false,
+      expanded: false
     }
   },
 
@@ -71,6 +71,8 @@ export default {
       this.$emit('changeLocale', locale)
     }
   },
+
+  name: 'LocaleSwitcher',
 
   props: {
     locale: {
