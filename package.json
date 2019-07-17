@@ -1,7 +1,21 @@
 {
   "name": "@dzangolab/locale-switcher",
   "version": "0.1.0",
-  "private": true,
+  "description": "A locale switcher component for vue.js",
+  "keywords": ["vuejs", "i18n"],
+  "homepage": "https://github.com/dzangolab/vue-locale-switcher",
+  "bugs": "https://github.com/dzangolab/vue-locale-switcher/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Olivier Pichon",
+    "email": "op@dzango.com",
+    "url": "https://github.com/opichon"
+  },
+  "conributors": {
+    "name": "Ramesh Lohala",
+    "email": "ramesh@united-asian.com"
+  },
+  "repository": "github:dzangolab/vue-locale-switcher",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
