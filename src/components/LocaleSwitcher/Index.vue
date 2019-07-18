@@ -14,7 +14,7 @@
       {{ locale }}
     </a>
     <ul
-      @mouseout="expanded = !expanded"
+      @mouseleave="expanded = false"
       :class="getClassForDropdown()"
       tabindex="-1"
       v-if="ssr"
@@ -30,7 +30,8 @@
       />
     </ul>
     <ul
-      @mouseout="expanded = !expanded"
+      @mouseleave="expanded = false"
+      @click="expanded = false"
       :class="getClassForDropdown()"
       tabindex="-1"
       v-else
