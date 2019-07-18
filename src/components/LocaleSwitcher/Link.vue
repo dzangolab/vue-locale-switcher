@@ -17,48 +17,9 @@
 </template>
 
 <script>
+import mixin from '@/mixins/mixin'
+
 export default {
-  computed: {
-    cls () {
-      let cls = ''
-
-      switch (this.theme) {
-        case 'bootstrap':
-          cls = 'dropdown-item'
-          break
-      }
-
-      if (this.active) {
-        cls = cls + ' active'
-      }
-
-      return cls
-    }
-  },
-
-  methods: {
-    onLocaleChanged () {
-      this.$emit('localeChanged', this.locale)
-    }
-  },
-
-  props: {
-    active: {
-      default: false,
-      type: Boolean
-    },
-    label: {
-      required: true,
-      type: String
-    },
-    locale: {
-      required: true,
-      type: String
-    },
-    theme: {
-      default: 'bootstrap',
-      type: String
-    }
-  }
+  mixins: [mixin]
 }
 </script>
