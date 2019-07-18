@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { LocaleSwitcher } from './components/index'
+import LocaleSwitcher from './components/LocaleSwitcher/Index'
 
 export default {
   name: 'app',

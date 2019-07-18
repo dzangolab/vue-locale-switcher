@@ -17,6 +17,23 @@
       @mouseout="expanded = !expanded"
       :class="getClassForDropdown()"
       tabindex="-1"
+      v-if="ssr"
+    >
+      <LinkSSR
+        @localeChanged="onLocaleChanged"
+        :active="locale === l.code"
+        :label="l.name"
+        :locale="l.code"
+        :key="l.code"
+        v-for="l in locales"
+        role="menuitem"
+      />
+    </ul>
+    <ul
+      @mouseout="expanded = !expanded"
+      :class="getClassForDropdown()"
+      tabindex="-1"
+      v-else
     >
       <Link
         @localeChanged="onLocaleChanged"
@@ -33,10 +50,12 @@
 
 <script>
 import Link from './Link'
+import LinkSSR from './LinkSSR'
 
 export default {
   components: {
-    Link
+    Link,
+    LinkSSR
   },
 
   data () {
@@ -82,6 +101,11 @@ export default {
     locales: {
       required: true,
       type: Array
+    },
+    ssr: {
+      required: false,
+      type: Boolean,
+      default: false
     },
     theme: {
       default: 'bootstrap',

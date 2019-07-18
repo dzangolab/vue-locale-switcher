@@ -10,6 +10,7 @@
     <a
       :class="cls"
       :disabled="active ? 'disabled' : ''"
+      :href="href"
       role="menuitem"
       target="_self"
     >
@@ -38,15 +39,32 @@ export default {
     },
 
     href () {
-      return this.route.href
+      let route = this.getRouteForLocale()
+
+      return route.href
     }
   },
 
   methods: {
+    getRouteForLocale () {
+      let route = '#'
+
+      let name = this.$route.name
+      let i = name.lastIndexOf('_')
+
+      route = name.slice(0, i) + '_' + this.locale
+
+      return this.$router.resolve({
+        name: route
+      })
+    },
+
     go () {
       if (this.active) {
         return
       }
+
+      this.$emit('localeChanged', this.locale)
 
       window.location = this.href
     }
@@ -61,9 +79,9 @@ export default {
       required: true,
       type: String
     },
-    route: {
+    locale: {
       required: true,
-      type: [Object, String]
+      type: String
     },
     theme: {
       default: 'bootstrap',
