@@ -1,6 +1,6 @@
 {
   "name": "@dzangolab/vue-locale-switcher",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A locale switcher component for vue.js",
   "keywords": [
     "vuejs",
@@ -24,7 +24,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name localeSwitcher ./src/components/index.js",
+    "build-bundle": "vue-cli-service build --target lib --name localeSwitcher ./src/components/LocaleSwitcher/Index.vue",
     "lint": "vue-cli-service lint"
   },
   "files": [
