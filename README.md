@@ -52,7 +52,7 @@ export default {
 
 `locales`: Array of locales. Every `locale` needs to be in the `{ code: 'code of locale', name: 'label of locale' }` format.
 
-`ssr`: for server side rendering app. default value is false(i.e. for SPA app use)
+`ssr`: true for server side rendering app. default value is false(i.e. for SPA app use)
 
 #### Usage SPA
 ``` html
