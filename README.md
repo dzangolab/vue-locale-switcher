@@ -54,13 +54,24 @@ export default {
 
 `ssr`: for server side rendering app. default value is false(i.e. for SPA app use)
 
-#### Usage
+#### Usage SPA
 ``` html
 <template>
     <LocaleSwitcher
       @localeChanged="onLocaleChanged"
       :locale="locale"
       :locales="locales"
+    />
+</template>
+```
+
+#### Usage SSR
+``` html
+<template>
+    <LocaleSwitcher
+      :locale="locale"
+      :locales="locales"
+      :ssr="true"
     />
 </template>
 ```
