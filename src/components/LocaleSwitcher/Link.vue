@@ -1,6 +1,6 @@
 <template>
   <li
-    @click.prevent="selectLocale(locale)"
+    @click.prevent="onLocaleChanged"
     :exact="true"
     :class="active ? 'active' : ''"
   >
@@ -37,8 +37,8 @@ export default {
   },
 
   methods: {
-    selectLocale (locale) {
-      this.$emit('selectLocale', locale)
+    onLocaleChanged () {
+      this.$emit('localeChanged', this.locale)
     }
   },
 

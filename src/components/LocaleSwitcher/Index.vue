@@ -19,7 +19,7 @@
       tabindex="-1"
     >
       <Link
-        @selectLocale="changeLocale"
+        @localeChanged="onLocaleChanged"
         :active="locale === l.code"
         :label="l.name"
         :locale="l.code"
@@ -67,8 +67,8 @@ export default {
       return cls + (this.expanded ? ' hover' : '')
     },
 
-    changeLocale (locale) {
-      this.$emit('changeLocale', locale)
+    onLocaleChanged (locale) {
+      this.$emit('localeChanged', locale)
     }
   },
 
