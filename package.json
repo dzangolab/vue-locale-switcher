@@ -2,7 +2,10 @@
   "name": "@dzangolab/vue-locale-switcher",
   "version": "0.1.0",
   "description": "A locale switcher component for vue.js",
-  "keywords": ["vuejs", "i18n"],
+  "keywords": [
+    "vuejs",
+    "i18n"
+  ],
   "homepage": "https://github.com/dzangolab/vue-locale-switcher",
   "bugs": "https://github.com/dzangolab/vue-locale-switcher/issues",
   "license": "MIT",
@@ -31,6 +34,7 @@
   ],
   "main": "./dist/localeSwitcher.common.js",
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },

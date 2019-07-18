@@ -1,17 +1,42 @@
 <template>
   <div id="app">
-    <div class="locale-switcher">
-      <LocaleSwitcher
-        @localeChanged="onLocaleChanged"
-        :locale="locale"
-        :locales="locales"
-      />
-    </div>
-    <div class="content">
-      <p>
-        Current app locale:&nbsp;
-        <span class="locale">{{locale}}</span>
-      </p>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+      <div class="container">
+        <a class="navbar-brand" href="#">Vue Locale Switcher</a>
+        <button
+          @click="expanded = !expanded"
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          :class="expanded ? 'show' : ''"
+          class="collapse navbar-collapse"
+          id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <LocaleSwitcher
+                @localeChanged="onLocaleChanged"
+                :locale="locale"
+                :locales="locales"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="main">
+      <div class="container">
+        <p>
+          Current app locale:&nbsp;
+          <span class="locale">{{locale}}</span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +52,7 @@ export default {
 
   data () {
     return {
+      expanded: false,
       locale: 'en',
       locales: [
         {
@@ -53,7 +79,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.locale {
-  font-weight: bold;
+.main {
+  padding-top: 20px;
+  font-size: 20px;
+
+  .locale {
+    font-weight: bold;
+  }
 }
 </style>
