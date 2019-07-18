@@ -16,7 +16,7 @@ npm install @dzangolab/vue-locale-switcher --save
 yarn add @dzangolab/vue-locale-switcher
 ```
 
-### Mount SPA
+### Mount
 
 #### mount with global
 
@@ -45,7 +45,7 @@ export default {
 }
 ```
 #### Events:
-`changeLocale`: Whenever the `locale` changes, this event is fired with the new value of locale as a parameter.
+`localeChanged`: Whenever the `locale` changes, this event is fired with the new value of locale as a parameter.
 
 #### Props:
 `locale`: Initial state of the `locale`.
@@ -58,7 +58,7 @@ export default {
 ``` html
 <template>
     <LocaleSwitcher
-      @changeLocale="updateLocale"
+      @localeChanged="onLocaleChanged"
       :locale="locale"
       :locales="locales"
     />
