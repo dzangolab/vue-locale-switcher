@@ -22,7 +22,7 @@ yarn add @dzangolab/vue-locale-switcher
 
 ``` javascript
 import Vue from 'vue'
-import {LocaleSwitcher} from '@dzangolab/vue-locale-switcher'
+import LocaleSwitcher from '@dzangolab/vue-locale-switcher'
 
 // require style
 import '@dzango/locale-switcher/dist/localeSwitcher.css'
@@ -36,7 +36,7 @@ Vue.use('LocaleSwitcher', LocaleSwitcher)
 // require styles
 import '@dzango/locale-switcher/dist/localeSwitcher.css'
 
-import {LocaleSwitcher} from '@dzangolab/vue-locale-switcher'
+import LocaleSwitcher from '@dzangolab/vue-locale-switcher'
 
 export default {
   components: {
@@ -52,56 +52,13 @@ export default {
 
 `locales`: Array of locales. Every `locale` needs to be in the `{ code: 'code of locale', name: 'label of locale' }` format.
 
+`ssr`: for server side rendering app. default value is false(i.e. for SPA app use)
+
 #### Usage
 ``` html
 <template>
     <LocaleSwitcher
       @changeLocale="updateLocale"
-      :locale="locale"
-      :locales="locales"
-    />
-</template>
-```
-
-#### mount with ssr
-
-#### mount with global
-
-``` javascript
-import Vue from 'vue'
-import {LocaleSwitcherSSR} from '@dzangolab/vue-locale-switcher'
-
-// require style
-import '@dzangolab/vue-locale-switcher/dist/localeSwitcher.css'
-
-Vue.use('LocaleSwitcherSSR', LocaleSwitcherSSR)
-```
-
-
-#### mount with component
-
-```javascript
-import {LocaleSwitcherSSR} from '@dzangolab/vue-locale-switcher'
-
-// require styles
-import '@dzango/vue-locale-switcher/dist/localeSwitcher.css'
-
-export default {
-  components: {
-    LocaleSwitcherSSR
-  }
-}
-```
-
-#### Props:
-`locale`: Initial state of the `locale`.
-
-`locales`: Array of locales. Every `locale` needs to be in the `{ code: 'code of locale', name: 'label of locale' }` format.
-
-#### Usage
-``` html
-<template>
-    <LocaleSwitcherSSR
       :locale="locale"
       :locales="locales"
     />
