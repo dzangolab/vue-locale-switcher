@@ -1,10 +1,18 @@
 <template>
   <div id="app">
-    <LocaleSwitcher
-      @changeLocale="changeLocale"
-      :locale="locale"
-      :locales="locales"
-    />
+    <div class="locale-switcher">
+      <LocaleSwitcher
+        @localeChanged="onLocaleChanged"
+        :locale="locale"
+        :locales="locales"
+      />
+    </div>
+    <div class="content">
+      <p>
+        Current app locale:&nbsp;
+        <span class="locale">{{locale}}</span>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -38,9 +46,14 @@ export default {
   },
 
   methods: {
-    changeLocale (locale) {
+    onLocaleChanged (locale) {
       this.locale = locale
     }
   }
 }
 </script>
+<style lang="scss" scoped>
+.locale {
+  font-weight: bold;
+}
+</style>
