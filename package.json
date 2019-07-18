@@ -1,6 +1,6 @@
 {
   "name": "@dzangolab/vue-locale-switcher",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A locale switcher component for vue.js",
   "keywords": ["vuejs", "i18n"],
   "homepage": "https://github.com/dzangolab/vue-locale-switcher",
