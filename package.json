@@ -14,10 +14,12 @@
     "email": "op@dzango.com",
     "url": "https://github.com/opichon"
   },
-  "contributors": {
-    "name": "Ramesh Lohala",
-    "email": "ramesh@united-asian.com"
-  },
+  "contributors": [
+    {
+      "name": "Ramesh Lohala",
+      "email": "ramesh@united-asian.com"
+    }
+  ],
   "repository": "github:dzangolab/vue-locale-switcher",
   "scripts": {
     "serve": "vue-cli-service serve",
