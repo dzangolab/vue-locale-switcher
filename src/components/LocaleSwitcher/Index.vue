@@ -36,12 +36,13 @@
       tabindex="-1"
       v-else
     >
-      <Link
+      <component
         @localeChanged="onLocaleChanged"
         :active="locale === l.code"
         :label="l.name"
         :locale="l.code"
         :key="l.code"
+        v-bind:is="linkComponent"
         v-for="l in locales"
         role="menuitem"
       />
@@ -57,6 +58,12 @@ export default {
   components: {
     Link,
     LinkSSR
+  },
+
+  computed: {
+    linkComponent () {
+      return this.ssr ? 'LinkSSR' : 'Link'
+    }
   },
 
   data () {

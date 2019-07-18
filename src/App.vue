@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
-        <a class="navbar-brand" href="#">Vue Locale Switcher</a>
+        <a class="navbar-brand" href="#">Dzangolab - Vue Locale Switcher</a>
         <button
           @click="expanded = !expanded"
           class="navbar-toggler"
