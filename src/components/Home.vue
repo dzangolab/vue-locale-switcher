@@ -24,7 +24,7 @@
                 @afterLocaleChanged="onLocaleChanged"
                 :locale="locale"
                 :locales="locales"
-                :localizePath="true"
+                :useLocalizePath="true"
               />
             </li>
           </ul>

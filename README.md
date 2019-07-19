@@ -55,7 +55,7 @@ export default {
 
 `ssr`: true for server side rendering app. default value is false(i.e. for SPA app use)
 
-`localizePath`: Default false, This prop is only for SPA apps, used when app has locale based routes.
+`useLocalizePath`: Default false, This prop is only for SPA apps, used when app has locale based routes.
 
 #### Usage SPA
 ``` html

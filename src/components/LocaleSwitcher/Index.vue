@@ -26,7 +26,7 @@
         :label="l.name"
         :locale="l.code"
         :key="l.code"
-        :localizePath="localizePath"
+        :useLocalizePath="useLocalizePath"
         :ssr="ssr"
         v-for="l in locales"
         role="menuitem"
@@ -119,7 +119,7 @@ export default {
       type: Boolean,
       default: false
     },
-    localizePath: {
+    useLocalizePath: {
       required: false,
       type: Boolean,
       default: false

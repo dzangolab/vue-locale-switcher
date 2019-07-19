@@ -35,7 +35,7 @@ export default {
     },
 
     href () {
-      if (!this.ssr && !this.localizePath) {
+      if (!this.ssr && !this.useLocalizePath) {
         return '#'
       }
 
@@ -68,7 +68,7 @@ export default {
 
       if (this.ssr) {
         window.location = this.href
-      } else if (this.localizePath) {
+      } else if (this.useLocalizePath) {
         this.$router.push(this.href)
       }
 
@@ -89,7 +89,7 @@ export default {
       required: true,
       type: String
     },
-    localizePath: {
+    useLocalizePath: {
       required: false,
       type: Boolean,
       default: false
