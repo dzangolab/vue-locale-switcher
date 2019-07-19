@@ -26,7 +26,7 @@
         :label="l.name"
         :locale="l.code"
         :key="l.code"
-        :useLocalizePath="useLocalizePath"
+        :useLocalizedPath="useLocalizedPath"
         :ssr="ssr"
         v-for="l in locales"
         role="menuitem"
@@ -123,7 +123,7 @@ export default {
       default: 'bootstrap',
       type: String
     },
-    useLocalizePath: {
+    useLocalizedPath: {
       required: false,
       type: Boolean,
       default: false
