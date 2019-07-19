@@ -45,22 +45,37 @@ export default {
 }
 ```
 #### Events:
-`localeChanged`: Whenever the `locale` changes, this event is fired with the new value of locale as a parameter.
+`afterLocaleChanged`: Whenever the `locale` changed, this event is fired with the new value of locale as a parameter.
+`beforeLocaleChange`: Whenever the `locale` changes, this event is fired. it will be useful if dev wants to add extra behaviour just before locale changes.
 
 #### Props:
 `locale`: Initial state of the `locale`.
 
 `locales`: Array of locales. Every `locale` needs to be in the `{ code: 'code of locale', name: 'label of locale' }` format.
 
-`ssr`: for server side rendering app. default value is false(i.e. for SPA app use)
+`ssr`: true for server side rendering app. default value is false(i.e. for SPA app use)
 
-#### Usage
+`useLocalizedPath`: Default false, This prop is only for SPA apps, used when app has locale based routes.
+
+#### Usage SPA
 ``` html
 <template>
     <LocaleSwitcher
-      @localeChanged="onLocaleChanged"
+      @afterLocaleChanged="onLocaleChanged"
       :locale="locale"
       :locales="locales"
     />
 </template>
 ```
+
+#### Usage SSR
+``` html
+<template>
+    <LocaleSwitcher
+      :locale="locale"
+      :locales="locales"
+      :ssr="true"
+    />
+</template>
+```
+*** Note: This package only supports the route name in `name_{locale}` pattern.
