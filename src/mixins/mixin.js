@@ -37,16 +37,6 @@ export default {
       })
     },
 
-    go () {
-      if (this.active) {
-        return
-      }
-
-      this.$emit('localeChanged', this.locale)
-
-      window.location = this.href
-    },
-
     onLocaleChanged () {
       this.$emit('localeChanged', this.locale)
     }

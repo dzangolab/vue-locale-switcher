@@ -4,7 +4,7 @@
     <a
       @mouseenter="expanded = true"
       @click="expanded = !expanded"
-      :class="getClassForLocale()"
+      :class="currentLocaleClass"
       aria-expanded="false"
       aria-haspopup="true"
       class="locale"
@@ -15,7 +15,7 @@
     </a>
     <ul
       @mouseleave="expanded = false"
-      :class="getClassForDropdown()"
+      :class="dropdownClass"
       tabindex="-1"
       v-if="ssr"
     >
@@ -61,6 +61,27 @@ export default {
   },
 
   computed: {
+    currentLocaleClass () {
+      let cls = ''
+
+      if (this.theme === 'bootstrap') {
+        cls = 'nav-link'
+      }
+
+      return cls + (this.expanded ? ' hover' : '')
+    },
+
+    dropdownClass () {
+      let cls = ''
+
+      if (this.theme === 'bootstrap') {
+        cls = 'dropdown-menu dropdown-menu-right'
+        cls = cls + (this.expanded ? ' show' : '')
+      }
+
+      return cls
+    },
+
     linkComponent () {
       return this.ssr ? 'LinkSSR' : 'Link'
     }

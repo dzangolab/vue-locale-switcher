@@ -23,6 +23,18 @@
 import mixin from '@/mixins/mixin'
 
 export default {
+  methods: {
+    go () {
+      if (this.active) {
+        return
+      }
+
+      this.$emit('localeChanged', this.locale)
+
+      window.location = this.href
+    }
+  },
+
   mixins: [mixin]
 }
 </script>
