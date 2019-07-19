@@ -51,6 +51,13 @@
       LocaleSwitcher
     },
 
+    created () {
+      let name = this.$route.name
+      let i = name.lastIndexOf('_')
+
+      this.locale = name.slice(i + 1)
+    },
+
     data () {
       return {
         expanded: false,
