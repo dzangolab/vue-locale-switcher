@@ -25,6 +25,7 @@
         :label="l.name"
         :locale="l.code"
         :key="l.code"
+        :localizePath="localizePath"
         :ssr="ssr"
         v-for="l in locales"
         role="menuitem"
@@ -109,6 +110,11 @@ export default {
       type: Array
     },
     ssr: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+    localizePath: {
       required: false,
       type: Boolean,
       default: false
