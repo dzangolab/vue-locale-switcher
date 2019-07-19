@@ -64,13 +64,15 @@ export default {
         return
       }
 
-      this.$emit('localeChanged', this.locale)
+      this.$emit('beforeLocaleChange')
 
       if (this.ssr) {
         window.location = this.href
       } else if (this.localizePath) {
         this.$router.push(this.href)
       }
+
+      this.$emit('afterLocaleChanged', this.locale)
     }
   },
 

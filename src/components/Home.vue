@@ -21,7 +21,7 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <LocaleSwitcher
-                @localeChanged="onLocaleChanged"
+                @afterLocaleChanged="onLocaleChanged"
                 :locale="locale"
                 :locales="locales"
                 :localizePath="true"

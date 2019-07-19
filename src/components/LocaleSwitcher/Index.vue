@@ -20,7 +20,8 @@
       tabindex="-1"
     >
       <Link
-        @localeChanged="onLocaleChanged"
+        @afterLocaleChanged="afterLocaleChanged"
+        @beforeLocaleChange="beforeLocaleChange"
         :active="locale === l.code"
         :label="l.name"
         :locale="l.code"
@@ -72,6 +73,14 @@ export default {
   },
 
   methods: {
+    afterLocaleChanged (locale) {
+      this.$emit('afterLocaleChanged', locale)
+    },
+
+    beforeLocaleChange () {
+      this.$emit('beforeLocaleChange')
+    },
+
     getClassForDropdown () {
       let cls = ''
 
@@ -91,10 +100,6 @@ export default {
       }
 
       return cls + (this.expanded ? ' hover' : '')
-    },
-
-    onLocaleChanged (locale) {
-      this.$emit('localeChanged', locale)
     }
   },
 

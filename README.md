@@ -45,7 +45,8 @@ export default {
 }
 ```
 #### Events:
-`localeChanged`: Whenever the `locale` changes, this event is fired with the new value of locale as a parameter.
+`afterLocaleChanged`: Whenever the `locale` changed, this event is fired with the new value of locale as a parameter.
+`beforeLocaleChange`: Whenever the `locale` changes, this event is fired. it will be useful if dev wants to add extra behaviour just before locale changes.
 
 #### Props:
 `locale`: Initial state of the `locale`.
@@ -60,7 +61,7 @@ export default {
 ``` html
 <template>
     <LocaleSwitcher
-      @localeChanged="onLocaleChanged"
+      @afterLocaleChanged="onLocaleChanged"
       :locale="locale"
       :locales="locales"
     />
