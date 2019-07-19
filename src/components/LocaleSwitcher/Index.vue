@@ -119,14 +119,14 @@ export default {
       type: Boolean,
       default: false
     },
+    theme: {
+      default: 'bootstrap',
+      type: String
+    },
     useLocalizePath: {
       required: false,
       type: Boolean,
       default: false
-    },
-    theme: {
-      default: 'bootstrap',
-      type: String
     }
   }
 }

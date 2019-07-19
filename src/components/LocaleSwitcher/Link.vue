@@ -89,14 +89,17 @@ export default {
       required: true,
       type: String
     },
-    useLocalizePath: {
-      required: false,
+    ssr: {
+      required: true,
       type: Boolean,
-      default: false
     },
     theme: {
       default: 'bootstrap',
       type: String
+    },
+    useLocalizePath: {
+      required: true,
+      type: Boolean,
     }
   }
 }
