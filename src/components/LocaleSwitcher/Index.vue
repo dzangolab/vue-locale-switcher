@@ -15,34 +15,17 @@
     </a>
     <ul
       @mouseleave="expanded = false"
+      @click="expanded = false"
       :class="dropdownClass"
       tabindex="-1"
-      v-if="ssr"
     >
-      <LinkSSR
+      <Link
         @localeChanged="onLocaleChanged"
         :active="locale === l.code"
         :label="l.name"
         :locale="l.code"
         :key="l.code"
-        v-for="l in locales"
-        role="menuitem"
-      />
-    </ul>
-    <ul
-      @mouseleave="expanded = false"
-      @click="expanded = false"
-      :class="getClassForDropdown()"
-      tabindex="-1"
-      v-else
-    >
-      <component
-        @localeChanged="onLocaleChanged"
-        :active="locale === l.code"
-        :label="l.name"
-        :locale="l.code"
-        :key="l.code"
-        v-bind:is="linkComponent"
+        :ssr="ssr"
         v-for="l in locales"
         role="menuitem"
       />
@@ -52,12 +35,10 @@
 
 <script>
 import Link from './Link'
-import LinkSSR from './LinkSSR'
 
 export default {
   components: {
-    Link,
-    LinkSSR
+    Link
   },
 
   computed: {
@@ -80,10 +61,6 @@ export default {
       }
 
       return cls
-    },
-
-    linkComponent () {
-      return this.ssr ? 'LinkSSR' : 'Link'
     }
   },
 

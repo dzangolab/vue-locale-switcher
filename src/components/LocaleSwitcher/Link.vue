@@ -7,7 +7,7 @@
     <a
       :class="cls"
       :disabled="active ? 'disabled' : ''"
-      href="#"
+      :href="href"
       role="menuitem"
       target="_self"
     >
@@ -17,9 +17,79 @@
 </template>
 
 <script>
-import mixin from '@/mixins/mixin'
-
 export default {
-  mixins: [mixin]
+  computed: {
+    cls () {
+      let cls = ''
+
+      switch (this.theme) {
+        case 'bootstrap':
+          cls = 'dropdown-item'
+          break
+      }
+
+      if (this.active) {
+        cls = cls + ' active'
+      }
+
+      return cls
+    },
+
+    href () {
+      if (!this.ssr) {
+        return '#'
+      }
+
+      let route = this.getRouteForLocale()
+
+      return route.href
+    }
+  },
+
+  methods: {
+    getRouteForLocale () {
+      let route = '#'
+
+      let name = this.$route.name
+      let i = name.lastIndexOf('_')
+
+      route = name.slice(0, i) + '_' + this.locale
+
+      return this.$router.resolve({
+        name: route
+      })
+    },
+
+    onLocaleChanged () {
+      if (this.active) {
+        return
+      }
+
+      this.$emit('localeChanged', this.locale)
+
+      if (this.ssr) {
+        window.location = this.href
+      }
+    }
+  },
+
+  props: {
+    active: {
+      default: false,
+      type: Boolean
+    },
+    label: {
+      required: true,
+      type: String
+    },
+    locale: {
+      required: true,
+      type: String
+    },
+    theme: {
+      default: 'bootstrap',
+      type: String
+    }
+  }
 }
 </script>
