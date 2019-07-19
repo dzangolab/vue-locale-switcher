@@ -77,3 +77,4 @@ export default {
     />
 </template>
 ```
+*** Note: This package only supports the route name in `name_{locale}` pattern.
