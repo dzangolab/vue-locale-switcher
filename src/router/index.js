@@ -14,16 +14,10 @@ export function createRouter () {
         return {y: 0}
       }
     },
-    routes: []
+    routes: [].concat(
+      home
+    )
   })
-
-  let routerLocales = [
-    {locale: 'en', addRoutePrefix: false},
-    {locale: 'fr', addRoutePrefix: true},
-    {locale: 'th', addRoutePrefix: true}
-  ]
-
-  home.addRoutes({router, routerLocales})
 
   return router
 }

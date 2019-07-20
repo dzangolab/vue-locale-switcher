@@ -20,14 +20,12 @@
       tabindex="-1"
     >
       <Link
-        @afterLocaleChanged="afterLocaleChanged"
-        @beforeLocaleChange="beforeLocaleChange"
+        @localeChanged="onLocaleChanged"
         :active="locale === l.code"
         :label="l.name"
         :locale="l.code"
         :key="l.code"
-        :useLocalizedPath="useLocalizedPath"
-        :ssr="ssr"
+        :mode="mode"
         v-for="l in locales"
         role="menuitem"
       />
@@ -73,12 +71,8 @@ export default {
   },
 
   methods: {
-    afterLocaleChanged (locale) {
-      this.$emit('afterLocaleChanged', locale)
-    },
-
-    beforeLocaleChange () {
-      this.$emit('beforeLocaleChange')
+    onLocaleChanged (locale) {
+      this.$emit('locale-switcher:localeChanged', locale)
     },
 
     getClassForDropdown () {
@@ -114,19 +108,17 @@ export default {
       required: true,
       type: Array
     },
-    ssr: {
+    mode: {
+      default: 'pwa',
       required: false,
-      type: Boolean,
-      default: false
+      type: String,
+      validator: function (value) {
+        return ['pwa', 'spa', 'ssr'].indexOf(value.toLowerCase()) !== -1
+      }
     },
     theme: {
       default: 'bootstrap',
       type: String
-    },
-    useLocalizedPath: {
-      required: false,
-      type: Boolean,
-      default: false
     }
   }
 }

@@ -5,7 +5,7 @@
   >
     <a
       :class="cls"
-      :disabled="active ? 'disabled' : ''"
+      :disabled="active ? 'disabled' : false"
       :href="href"
       role="menuitem"
       target="_self"
@@ -35,24 +35,35 @@ export default {
     },
 
     href () {
-      if (!this.ssr && !this.useLocalizedPath) {
+      if (this.spa) {
         return '#'
       }
 
       let route = this.getRouteForLocale()
 
       return route.href
+    },
+
+    pwa () {
+      return 'pwa' === this.mode
+    },
+
+    spa () {
+      return 'spa' === this.mode
+    },
+
+    ssr () {
+      return 'ssr' === this.mode
     }
   },
 
   methods: {
     getRouteForLocale () {
-      let route = '#'
-
       let name = this.$route.name
+
       let i = name.lastIndexOf('_')
 
-      route = name.slice(0, i) + '_' + this.locale
+      let route = name.slice(0, i) + '_' + this.locale
 
       return this.$router.resolve({
         name: route
@@ -64,15 +75,20 @@ export default {
         return
       }
 
-      this.$emit('beforeLocaleChange')
-
       if (this.ssr) {
         window.location = this.href
-      } else if (this.useLocalizedPath) {
-        this.$router.push(this.href)
+      } else {
+        // Built-in support for vue-i18n
+        if ('undefined' !== (typeof this.$i18n)) {
+          this.$i18n.locale = this.locale
+        }
+
+        if (this.pwa) {
+          this.$router.push(this.href)
+        }
       }
 
-      this.$emit('afterLocaleChanged', this.locale)
+      this.$emit('localeChanged', this.locale)
     }
   },
 
@@ -89,17 +105,17 @@ export default {
       required: true,
       type: String
     },
-    ssr: {
-      required: true,
-      type: Boolean,
+    mode: {
+      default: 'pwa',
+      required: false,
+      type: String,
+      validator: function (value) {
+        return ['pwa', 'spa', 'ssr'].indexOf(value) !== -1
+      }
     },
     theme: {
       default: 'bootstrap',
       type: String
-    },
-    useLocalizedPath: {
-      required: true,
-      type: Boolean,
     }
   }
 }

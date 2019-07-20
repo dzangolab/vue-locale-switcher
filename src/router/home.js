@@ -1,17 +1,16 @@
 const Home = () => import('@/components/Home')
 
-const addRoutes = ({router, routerLocales}) => {
-  let routes = routerLocales.map((routerLocale) => {
-    return {
-      component: Home,
-      name: `home_${routerLocale.locale}`,
-      path: `/${routerLocale.addRoutePrefix ? routerLocale.locale : ''}`
-    }
-  })
+const routes = [
+  {
+    component: Home,
+    name: 'home_en',
+    path: '/'
+  },
+  {
+    component: Home,
+    name: 'home_fr',
+    path: '/fr'
+  }
+]
 
-  router.addRoutes(routes)
-}
-
-export default {
-  addRoutes
-}
+export default routes
