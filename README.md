@@ -147,7 +147,7 @@ When a different locale is selected, the url associated with this locale will be
 
 Specifies the theme to use to style the commponent. Currently 2 themes are provided:
 
-### 'bootstrap'
+### 'bootstrap' (default)
 
 If this theme is selected, then the appropriate bootstrap classes will be set on the component. It is assumed that the coponent will be placed inside a bootstrap Navbar.
 
