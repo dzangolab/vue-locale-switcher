@@ -2,12 +2,11 @@
   <div
     class="locale-switcher">
     <a
-      @mouseenter="expanded = true"
+      @mouseover="expanded = true"
       @click="expanded = !expanded"
       :class="currentLocaleClass"
       aria-expanded="false"
       aria-haspopup="true"
-      class="locale"
       href="#"
       role="button"
     >
@@ -26,6 +25,7 @@
         :locale="l.code"
         :key="l.code"
         :mode="mode"
+        :theme="theme"
         v-for="l in locales"
         role="menuitem"
       />
@@ -45,19 +45,30 @@ export default {
     currentLocaleClass () {
       let cls = ''
 
-      if (this.theme === 'bootstrap') {
-        cls = 'nav-link'
+      switch (this.theme) {
+        case 'bootstrap':
+          cls = 'nav-link' + (this.expanded ? ' hover' : '')
+          break
+
+        case 'custom':
+          cls = 'locale-switcher__locale' + (this.expanded ? ' localswitcher__locale--hover' : '')
+          break
       }
 
-      return cls + (this.expanded ? ' hover' : '')
+      return cls
     },
 
     dropdownClass () {
       let cls = ''
 
-      if (this.theme === 'bootstrap') {
-        cls = 'dropdown-menu dropdown-menu-right'
-        cls = cls + (this.expanded ? ' show' : '')
+      switch (this.theme) {
+        case 'bootstrap':
+          cls = 'dropdown-menu dropdown-menu-right' + (this.expanded ? ' show' : '')
+          break
+
+        case 'custom':
+          cls = 'locale-switcher__dropdown' + (this.expanded ? ' locale-switcher__dropdown--show' : '')
+          break
       }
 
       return cls
@@ -73,27 +84,6 @@ export default {
   methods: {
     onLocaleChanged (locale) {
       this.$emit('locale-switcher:localeChanged', locale)
-    },
-
-    getClassForDropdown () {
-      let cls = ''
-
-      if (this.theme === 'bootstrap') {
-        cls = 'dropdown-menu dropdown-menu-right'
-        cls = cls + (this.expanded ? ' show' : '')
-      }
-
-      return cls
-    },
-
-    getClassForLocale () {
-      let cls = ''
-
-      if (this.theme === 'bootstrap') {
-        cls = 'nav-link'
-      }
-
-      return cls + (this.expanded ? ' hover' : '')
     }
   },
 
@@ -124,29 +114,80 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-div.locale-switcher {
+<style lang="scss">
+.locale-switcher {
   position: relative;
 
-  a {
-    &.locale {
-      border-radius: 50%;
-      display: none;
-      height: 3rem;
-      line-height: 2rem;
-      text-align: center;
-      width: 3rem;
+  &__locale {
+    border-radius: 50%;
+    display: none;
+    height: 3rem;
+    line-height: 2rem;
+    text-align: center;
+    width: 3rem;
 
-      @media (min-width: 968px) {
-        display: block;
-      }
+    @media (min-width: 992px) {
+      display: block;
     }
   }
 
-  .dropdown-menu {
-    top: 110%;
+  &__dropdown {
+    background-clip: padding-box;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    display: none;
+    left: auto;
+    list-style: none;
+    margin: 0.125rem 0 0;
+    min-width: 10rem;
+    padding: .5rem 0;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 100%;
+    width: 100%;
+    z-index: 1000;
 
-    @media (max-width: 967px) {
+    @media (max-width: 991.99px) {
+      border: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    &--show {
+      display: block;
+    }
+  }
+
+  &__item {
+    background-color: transparent;
+    border: 0;
+    clear: both;
+    color: inherit;
+    display: block;
+    font-weight: normal;
+    padding: .25rem 1.5rem;
+    text-align: inherit;
+    white-space: nowrap;
+    width: 100%;
+
+    &--active {
+      background-color: #007bff;
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+
+  // bootstrap overrides for small devices
+  @media (max-width: 991.99px) {
+    .nav-link {
+      display: none;
+    }
+
+    .dropdown-menu {
+      background: transparent;
       border: none;
       border-top: 1px solid #edf5ff;
       display: flex;

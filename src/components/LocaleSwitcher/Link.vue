@@ -1,7 +1,6 @@
 <template>
   <li
     @click.prevent="onLocaleChanged"
-    :class="active ? 'active' : ''"
   >
     <a
       :class="cls"
@@ -23,12 +22,12 @@ export default {
 
       switch (this.theme) {
         case 'bootstrap':
-          cls = 'dropdown-item'
+          cls += 'dropdown-item' + (this.active ? ' active' : '')
           break
-      }
 
-      if (this.active) {
-        cls = cls + ' active'
+        case 'custom':
+          cls = 'locale-switcher__item' + (this.active ? ' locale-switcher__item--active' : '')
+          break
       }
 
       return cls

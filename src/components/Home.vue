@@ -57,6 +57,7 @@
             :locale="locale"
             :locales="locales"
             mode="spa"
+            theme="custom"
           />
         </div>
       </section>
@@ -78,6 +79,7 @@
             @locale-switcher:localeChanged="onLocaleChanged"
             :locale="locale"
             :locales="locales"
+            theme="custom"
           />
         </div>
       </section>
@@ -169,14 +171,14 @@ main {
         flex: 0;
         width: 100%;
 
-        ul.dropdown-menu {
+        &__dropdown {
           border-top: none;
           position: static;
           width: 100%;
         }
       }
 
-      @media (min-width: 767px) {
+      @media (min-width: 992px) {
         flex-direction: row;
         justify-content: space-between;
 

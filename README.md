@@ -143,6 +143,21 @@ Set the mode to `ssr` if your app uses server side rendering.
 
 When a different locale is selected, the url associated with this locale will be loaded.
 
+### `theme`
+
+Specifies the theme to use to style the commponent. Currently 2 themes are provided:
+
+### 'bootstrap'
+
+If this theme is selected, then the appropriate bootstrap classes will be set on the component. It is assumed that the coponent will be placed inside a bootstrap Navbar.
+
+Custom styling is provided for device width below 992px.
+
+
+### 'custom'
+
+If this theme is selected, then custom BEM classes will be set on the component. Currently these classes are styled to resemble bootstrap, but they can easily be overridden inside your own stylesheet.
+
 
 ## Events
 
