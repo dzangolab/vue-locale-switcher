@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import '@/assets/scss/home.scss'
 import LocaleSwitcher from './LocaleSwitcher/Index'
 
 export default {
@@ -143,54 +144,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-main {
-  padding-top: 20px;
-  font-size: 20px;
-
-  .locale {
-    font-weight: bold;
-  }
-
-  section {
-    margin-top: 2rem;
-
-    .switcher {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-
-      .comment {
-        flex: 1;
-      }
-
-      .locale-switcher {
-        display: block;
-        flex: 0;
-        width: 100%;
-
-        &__dropdown {
-          border-top: none;
-          position: static;
-          width: 100%;
-        }
-      }
-
-      @media (min-width: 992px) {
-        flex-direction: row;
-        justify-content: space-between;
-
-        .locale-switcher {
-          ul.dropdown-menu {
-            position: absolute;
-            width: auto;
-          }
-        }
-      }
-    }
-  }
-}
-</style>
-
