@@ -32,7 +32,7 @@
     width: 100%;
     z-index: 1000;
 
-    @media (max-width: 991.99px) {
+    @media (max-width: 991.9px) {
       border: none;
       display: flex;
       flex-direction: row;
@@ -64,7 +64,7 @@
   }
 
   // bootstrap overrides for small devices
-  @media (max-width: 991.99px) {
+  @media (max-width: 991.9px) {
     .nav-link {
       display: none;
     }
