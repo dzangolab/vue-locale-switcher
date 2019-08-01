@@ -139,8 +139,7 @@ export default {
 
   methods: {
     onLocaleChanged (locale) {
-      let old = this.locale
-      console.log('locale changed from ' + old + ' to ' + this.locale + '.')
+      console.log('locale changed' + ' to ' + locale + '.')
     }
   }
 }

@@ -34,8 +34,9 @@
 </template>
 
 <script>
-import '@/assets/scss/localeSwitcher.scss'
 import Link from './Link'
+
+import '@/assets/scss/localeSwitcher.scss'
 
 export default {
   components: {
