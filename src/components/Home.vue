@@ -22,7 +22,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <LocaleSwitcher
-                  @afterLocaleChanged="onLocaleChanged"
+                  @locale-switcher:localeChanged="onLocaleChanged"
                   :locale="locale"
                   :locales="locales"
                   mode="pwa"
@@ -95,8 +95,9 @@
 </template>
 
 <script>
-import '@/assets/scss/home.scss'
 import LocaleSwitcher from './LocaleSwitcher/Index'
+
+import '@/assets/scss/home.scss'
 
 export default {
   name: 'Home',
@@ -112,10 +113,10 @@ export default {
     }
   },
 
-  // Because a  route has a different path for each localeh, determine locale based on route
+  // Because a  route has a different path for each locale, determine locale based on route
   created () {
-    let name = this.$route.name,
-        i = name.lastIndexOf('_')
+    let name = this.$route.name
+    let i = name.lastIndexOf('_')
 
     this.$i18n.locale = name.slice(i + 1)
   },
