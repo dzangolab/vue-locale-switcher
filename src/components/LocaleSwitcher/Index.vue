@@ -53,7 +53,7 @@ export default {
           break
 
         case 'custom':
-          cls = 'locale-switcher__locale' + (this.expanded ? ' localswitcher__locale--hover' : '')
+          cls = 'locale-switcher__locale' + (this.expanded ? '--hover' : '')
           break
       }
 
@@ -69,7 +69,7 @@ export default {
           break
 
         case 'custom':
-          cls = 'locale-switcher__dropdown' + (this.expanded ? ' locale-switcher__dropdown--show' : '')
+          cls = 'locale-switcher__dropdown' + (this.expanded ? '--show' : '')
           break
       }
 

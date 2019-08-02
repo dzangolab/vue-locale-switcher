@@ -2,6 +2,7 @@
   position: relative;
 
   &__locale {
+    @extend .locale-switcher;
     border-radius: 50%;
     display: none;
     height: 3rem;
@@ -15,6 +16,7 @@
   }
 
   &__dropdown {
+    @extend .locale-switcher;
     background-clip: padding-box;
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -40,6 +42,7 @@
     }
 
     &--show {
+      @extend .locale-switcher__dropdown;
       display: block;
     }
   }
@@ -53,13 +56,19 @@
     font-weight: normal;
     padding: .25rem 1.5rem;
     text-align: inherit;
+    text-decoration: none!important;
     white-space: nowrap;
     width: 100%;
 
     &--active {
+      @extend .locale-switcher__item;
       background-color: #007bff;
       color: #ffffff;
       text-decoration: none;
+    }
+
+    &:hover {
+      color: red;
     }
   }
 
