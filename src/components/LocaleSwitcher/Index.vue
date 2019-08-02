@@ -7,7 +7,7 @@
       :class="currentLocaleClass"
       aria-expanded="false"
       aria-haspopup="true"
-      href="#"
+      href="javascript:"
       role="button"
     >
       {{ locale }}
