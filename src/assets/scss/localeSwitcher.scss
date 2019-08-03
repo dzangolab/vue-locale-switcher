@@ -1,25 +1,30 @@
+@import "vars";
+
 .locale-switcher {
   position: relative;
 
   &__locale {
-    @extend .locale-switcher;
     border-radius: 50%;
     display: none;
-    height: 3rem;
-    line-height: 2rem;
+    height: $height;
+    line-height: $height;
+    text-decoration: none!important;
     text-align: center;
-    width: 3rem;
+    width: auto;
 
     @media (min-width: 992px) {
       display: block;
     }
+
+    &--hover {
+      @extend .locale-switcher__locale;
+    }
   }
 
   &__dropdown {
-    @extend .locale-switcher;
     background-clip: padding-box;
     background-color: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid $border-color;
     border-radius: 0.25rem;
     display: none;
     left: auto;
@@ -66,14 +71,10 @@
       color: #ffffff;
       text-decoration: none;
     }
-
-    &:hover {
-      color: red;
-    }
   }
 
   // bootstrap overrides for small devices
-  @media (max-width: 991.9px) {
+  @media (max-width: 991.99px) {
     .nav-link {
       display: none;
     }
