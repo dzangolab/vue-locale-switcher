@@ -172,3 +172,10 @@ Fired after a new locale has been set. The event includes the new locale value.
 This component has built-in support for vue-i18n. When the locale is changed via the LocaleSwitcher component, the vue-i18n locale will be changed automatically.
 
 This only applies if the `mode` property is set to `spa`.
+
+### import locale-switcher scss files via custom SCSS file:
+instead of importing the css file in component or main.js, you can also import scss file into app scss file. 
+
+```
+@import '~@dzangolab/vue-locale-switcher/src/assets/scss/localeSwitcher.scss';
+```

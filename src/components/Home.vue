@@ -22,7 +22,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <LocaleSwitcher
-                  @afterLocaleChanged="onLocaleChanged"
+                  @locale-switcher:localeChanged="onLocaleChanged"
                   :locale="locale"
                   :locales="locales"
                   mode="pwa"
@@ -97,6 +97,8 @@
 <script>
 import LocaleSwitcher from './LocaleSwitcher/Index'
 
+import '@/assets/scss/home.scss'
+
 export default {
   name: 'Home',
 
@@ -111,10 +113,10 @@ export default {
     }
   },
 
-  // Because a  route has a different path for each localeh, determine locale based on route
+  // Because a  route has a different path for each locale, determine locale based on route
   created () {
-    let name = this.$route.name,
-        i = name.lastIndexOf('_')
+    let name = this.$route.name
+    let i = name.lastIndexOf('_')
 
     this.$i18n.locale = name.slice(i + 1)
   },
@@ -137,60 +139,8 @@ export default {
 
   methods: {
     onLocaleChanged (locale) {
-      let old = this.locale
-      console.log('locale changed from ' + old + ' to ' + this.locale + '.')
+      console.log('locale changed' + ' to ' + locale + '.')
     }
   }
 }
 </script>
-
-<style lang="scss">
-main {
-  padding-top: 20px;
-  font-size: 20px;
-
-  .locale {
-    font-weight: bold;
-  }
-
-  section {
-    margin-top: 2rem;
-
-    .switcher {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-
-      .comment {
-        flex: 1;
-      }
-
-      .locale-switcher {
-        display: block;
-        flex: 0;
-        width: 100%;
-
-        &__dropdown {
-          border-top: none;
-          position: static;
-          width: 100%;
-        }
-      }
-
-      @media (min-width: 992px) {
-        flex-direction: row;
-        justify-content: space-between;
-
-        .locale-switcher {
-          ul.dropdown-menu {
-            position: absolute;
-            width: auto;
-          }
-        }
-      }
-    }
-  }
-}
-</style>
-
