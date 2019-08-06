@@ -35,7 +35,7 @@ export default {
 
     href () {
       if (this.spa) {
-        return '#'
+        return 'javascript:'
       }
 
       let route = this.getRouteForLocale()

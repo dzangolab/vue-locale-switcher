@@ -1,8 +1,9 @@
 import {shallowMount} from '@vue/test-utils'
+import Link from '@/components/LocaleSwitcher/Link.vue'
 import LocaleSwitcher from '@/components/LocaleSwitcher/Index.vue'
 
-describe('LocaleSwitcher.vue', () => {
-  let cmp
+describe('Index.vue', () => {
+  let wrapper
 
   const locale = 'en'
   const locales = [
@@ -17,7 +18,7 @@ describe('LocaleSwitcher.vue', () => {
   ]
 
   beforeEach(() => {
-    cmp = shallowMount(LocaleSwitcher, {
+    wrapper = shallowMount(LocaleSwitcher, {
       propsData: {
         locale: locale,
         locales: locales
@@ -26,12 +27,16 @@ describe('LocaleSwitcher.vue', () => {
   })
 
   it('renders passed locale prop', () => {
-    expect(cmp.text()).toEqual(locale)
+    expect(wrapper.text()).toEqual(locale)
+  })
+
+  it('renders links', () => {
+    expect(wrapper.findAll(Link).length).toBe(2)
   })
 
   it("emits an event with locale argument", () => {
-    cmp.vm.onLocaleChanged('fr')
+    wrapper.vm.onLocaleChanged('fr')
 
-    expect(cmp.emitted()['locale-switcher:localeChanged'][0]).toEqual(["fr"])
+    expect(wrapper.emitted()['locale-switcher:localeChanged'][0]).toEqual(["fr"])
   })
 })
