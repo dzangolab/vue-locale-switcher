@@ -44,15 +44,15 @@ export default {
     },
 
     pwa () {
-      return 'pwa' === this.mode
+      return this.mode === 'pwa'
     },
 
     spa () {
-      return 'spa' === this.mode
+      return this.mode === 'spa'
     },
 
     ssr () {
-      return 'ssr' === this.mode
+      return this.mode === 'ssr'
     }
   },
 
@@ -78,7 +78,7 @@ export default {
         window.location = this.href
       } else {
         // Built-in support for vue-i18n
-        if ('undefined' !== (typeof this.$i18n)) {
+        if ((typeof this.$i18n) !== 'undefined') {
           this.$i18n.locale = this.locale
         }
 
