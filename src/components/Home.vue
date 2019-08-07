@@ -139,7 +139,10 @@ export default {
 
   methods: {
     onLocaleChanged (locale) {
+      this.$i18n.locale = locale
+
       console.log('locale changed' + ' to ' + locale + '.')
+      console.log('vue-i18n locale changed' + ' to ' + this.$i18n.locale + '.')
     }
   }
 }

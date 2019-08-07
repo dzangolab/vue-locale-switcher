@@ -26,7 +26,7 @@ export default {
           break
 
         case 'custom':
-          cls = 'locale-switcher__item' + (this.active ? ' locale-switcher__item--active' : '')
+          cls = 'locale-switcher__item' + (this.active ? '--active' : '')
           break
       }
 
@@ -77,17 +77,13 @@ export default {
       if (this.ssr) {
         window.location = this.href
       } else {
-        // Built-in support for vue-i18n
-        if ((typeof this.$i18n) !== 'undefined') {
-          this.$i18n.locale = this.locale
-        }
+
+        this.$emit('localeChanged', this.locale)
 
         if (this.pwa) {
           this.$router.push(this.href)
         }
       }
-
-      this.$emit('localeChanged', this.locale)
     }
   },
 

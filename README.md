@@ -128,8 +128,6 @@ When a different locale is selected, the vue-router will load the route associat
 
 Use this mode if your app has different routes for each page in different locales, such as `/aboutus` (en) vs `/apropos` (fr), or `/home` (en) vs `/de` (de).
 
-If your app uses vue-i18n, then the i18n locale will be updated.
-
 
 #### `spa`
 
@@ -174,7 +172,7 @@ This component has built-in support for vue-i18n. When the locale is changed via
 This only applies if the `mode` property is set to `spa`.
 
 ### import locale-switcher scss files via custom SCSS file:
-instead of importing the css file in component or main.js, you can also import scss file into app scss file. 
+instead of importing the css file in component or main.js, you can also import scss file into app scss file.
 
 ```
 @import '~@dzangolab/vue-locale-switcher/src/assets/scss/localeSwitcher.scss';
