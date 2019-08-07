@@ -77,17 +77,13 @@ export default {
       if (this.ssr) {
         window.location = this.href
       } else {
-        // Built-in support for vue-i18n
-        if ((typeof this.$i18n) !== 'undefined') {
-          this.$i18n.locale = this.locale
-        }
+
+        this.$emit('localeChanged', this.locale)
 
         if (this.pwa) {
           this.$router.push(this.href)
         }
       }
-
-      this.$emit('localeChanged', this.locale)
     }
   },
 
