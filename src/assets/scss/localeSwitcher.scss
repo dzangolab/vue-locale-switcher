@@ -5,9 +5,10 @@
 
   &__locale {
     border-radius: 50%;
+    color: $ls-text-color;
     display: none;
-    height: $height;
-    line-height: $height;
+    height: $ls-height;
+    line-height: $ls-height;
     text-decoration: none!important;
     text-align: center;
     width: auto;
@@ -23,8 +24,8 @@
 
   &__dropdown {
     background-clip: padding-box;
-    background-color: #ffffff;
-    border: 1px solid $border-color;
+    background-color: #ls-ffffff;
+    border: 1px solid $ls-border-color;
     border-radius: 0.25rem;
     display: none;
     left: auto;
