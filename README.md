@@ -131,9 +131,7 @@ Use this mode if your app has different routes for each page in different locale
 
 #### `spa`
 
-When a different locale is selected, the current route remains unchagnged and the page is not reloaded.
-
-If your app uses vue-i18n, then the i18n locale will be updated.
+When a different locale is selected, the current route remains unchanged and the page is not reloaded. This assumes that your app will listen to the `locale-switcher:localeChanged` event and updates its locale somehow.
 
 #### `ssr`
 
@@ -164,12 +162,6 @@ The component fires the following events:
 ### `locale-switcher:localeChanged`
 
 Fired after a new locale has been set. The event includes the new locale value.
-
-## Support for vue-i18n
-
-This component has built-in support for vue-i18n. When the locale is changed via the LocaleSwitcher component, the vue-i18n locale will be changed automatically.
-
-This only applies if the `mode` property is set to `spa`.
 
 ### import locale-switcher scss files via custom SCSS file:
 instead of importing the css file in component or main.js, you can also import scss file into app scss file.
