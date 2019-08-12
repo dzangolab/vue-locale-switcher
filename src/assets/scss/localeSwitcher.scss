@@ -1,6 +1,6 @@
 @import "vars";
 
-.locale-switcher {
+.ls {
   position: relative;
 
   &__locale {
@@ -17,8 +17,7 @@
       display: block;
     }
 
-    &--hover {
-      @extend .locale-switcher__locale;
+    &:hover {
     }
   }
 
@@ -48,7 +47,6 @@
     }
 
     &--show {
-      @extend .locale-switcher__dropdown;
       display: block;
     }
   }
@@ -67,7 +65,6 @@
     width: 100%;
 
     &--active {
-      @extend .locale-switcher__item;
       background-color: #007bff;
       color: #ffffff;
       text-decoration: none;

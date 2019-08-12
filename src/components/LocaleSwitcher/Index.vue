@@ -1,6 +1,6 @@
 <template>
   <div
-    class="locale-switcher">
+    class="ls">
     <a
       @mouseover="expanded = true"
       @click="expanded = !expanded"
@@ -53,7 +53,7 @@ export default {
           break
 
         case 'custom':
-          cls = 'locale-switcher__locale' + (this.expanded ? '--hover' : '')
+          cls = 'ls__locale'
           break
       }
 
@@ -69,7 +69,7 @@ export default {
           break
 
         case 'custom':
-          cls = 'locale-switcher__dropdown' + (this.expanded ? '--show' : '')
+          cls = 'ls__dropdown' + (this.expanded ? ' ls__dropdown--show' : '')
           break
       }
 

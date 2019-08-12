@@ -26,7 +26,7 @@ export default {
           break
 
         case 'custom':
-          cls = 'locale-switcher__item' + (this.active ? '--active' : '')
+          cls = 'ls__item' + (this.active ? ' ls__item--active' : '')
           break
       }
 
