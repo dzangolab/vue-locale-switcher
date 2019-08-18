@@ -23,7 +23,7 @@ const router = new VueRouter({
 describe('Index.vue', () => {
   let wrapper
 
-  const label = 'en'
+  const label = 'English'
   const locale = 'en'
 
   beforeEach(() => {
@@ -38,12 +38,12 @@ describe('Index.vue', () => {
   })
 
   it('renders passed label prop', () => {
-    expect(wrapper.text()).toEqual(locale)
+    expect(wrapper.text()).toEqual(label)
   })
 
-  it("emits an event with locale argument", () => {
+  it('emits an event with locale argument', () => {
     wrapper.vm.onLocaleChanged()
 
-    expect(wrapper.emitted()['localeChanged'][0]).toEqual(["en"])
+    expect(wrapper.emitted()['localeChanged'][0]).toEqual([locale])
   })
 })

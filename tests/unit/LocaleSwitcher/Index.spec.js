@@ -34,9 +34,9 @@ describe('Index.vue', () => {
     expect(wrapper.findAll(Link).length).toBe(2)
   })
 
-  it("emits an event with locale argument", () => {
+  it('emits an event with locale argument', () => {
     wrapper.vm.onLocaleChanged('fr')
 
-    expect(wrapper.emitted()['locale-switcher:localeChanged'][0]).toEqual(["fr"])
+    expect(wrapper.emitted()['locale-switcher:localeChanged'][0]).toEqual(['fr'])
   })
 })
