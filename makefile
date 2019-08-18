@@ -1,6 +1,6 @@
-build:
-	@printf "\033[0;32m>>> Building component\033[0m\n"
-	yarn build
+build-bundle:
+	@printf "\033[0;32m>>> Building component for production\033[0m\n"
+	yarn build-bundle
 
 install:
 	@printf "\033[0;32m>>> Installing dependencies\033[0m\n"
