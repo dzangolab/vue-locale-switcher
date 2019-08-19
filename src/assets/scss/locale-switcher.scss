@@ -1,4 +1,6 @@
-@import "vars";
+$ls-border-color: rgba(0, 0, 0, 0.15) !default;
+$ls-height: 3rem !default;
+$ls-text-color: rgba(0, 0, 0, 1) !default;
 
 .ls {
   position: relative;

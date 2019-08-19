@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import App from './App.vue'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import {createRouter} from './router'
+
+import '@/assets/scss/app.scss'
 
 Vue.config.productionTip = false
 
