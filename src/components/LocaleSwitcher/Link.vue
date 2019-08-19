@@ -77,7 +77,6 @@ export default {
       if (this.ssr) {
         window.location = this.href
       } else {
-
         this.$emit('localeChanged', this.locale)
 
         if (this.pwa) {
