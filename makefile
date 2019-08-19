@@ -18,3 +18,6 @@ run:
 	@printf "\033[0;32m>>> Running local server\033[0m\n"
 	yarn serve
 
+test.unit:
+	@printf "\033[0;32m>>> Running unit tests\033[0m\n"
+	yarn run test:unit
