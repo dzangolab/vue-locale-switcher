@@ -168,5 +168,5 @@ Fired after a new locale has been set. The event includes the new locale value.
 Instead of importing the css file in component or main.js, you can also import scss file into your app scss file.
 
 ```
-@import '~@dzangolab/vue-locale-switcher/src/assets/scss/localeSwitcher.scss';
+@import '~@dzangolab/vue-locale-switcher/src/assets/scss/locale-switcher.scss';
 ```
