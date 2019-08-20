@@ -8,7 +8,7 @@ LocaleSwitcher component for Vue. Supports SSR apps.
 * vue-router >= 3.0
 * bootstrap >= 4.3.1
 
-This component asssumes that your app's route follow a namingconvention. See [Route namning convention](#routenamingconvention).
+This component assumes that your app's route follow a naming convention. See [Route naming convention](#routenamingconvention).
 
 ## Usage
 
@@ -31,7 +31,7 @@ yarn add @dzangolab/vue-locale-switcher
 
 import Vue from 'vue'
 import LocaleSwitcher from '@dzangolab/vue-locale-switcher'
-import '@dzangolab/locale-switcher/dist/localeSwitcher.css' // import stylesheet
+import '@dzangolab/vue-locale-switcher/dist/localeSwitcher.css' // import stylesheet
 
 Vue.use('LocaleSwitcher', LocaleSwitcher)
 ```
@@ -43,7 +43,7 @@ Vue.use('LocaleSwitcher', LocaleSwitcher)
 
 <script>
 import LocaleSwitcher from '@dzangolab/vue-locale-switcher'
-import '@dzangolab/locale-switcher/dist/localeSwitcher.css' // import stylesheet
+import '@dzangolab/vue-locale-switcher/dist/localeSwitcher.css' // import stylesheet
 
 export default {
   components: {
@@ -111,7 +111,7 @@ The available locales. An array of locales, in the following format:
 ]
 ```
 
-The locale `code ` is whatever your app uses to identify the locale. We recommend the stanard ISO code, eg `en, `en_us`,  etc.
+The locale `code` is whatever your app uses to identify the locale. We recommend the stanard ISO code, eg `en, `en_us`,  etc.
 
 The locale `name` is used to display the locale. We recommend using the localized locale name, eg 'English', 'Français', 'Deutsch', etc.
 
@@ -141,11 +141,11 @@ When a different locale is selected, the url associated with this locale will be
 
 ### `theme`
 
-Specifies the theme to use to style the commponent. Currently 2 themes are provided:
+Specifies the theme to use to style the component. Currently 2 themes are provided:
 
 ### `bootstrap` (default)
 
-If this theme is selected, then the appropriate bootstrap classes will be set on the component. It is assumed that the coponent will be placed inside a bootstrap Navbar.
+If this theme is selected, then the appropriate bootstrap classes will be set on the component. It is assumed that the component will be placed inside a bootstrap Navbar.
 
 Custom styling is provided for device width below 992px.
 
