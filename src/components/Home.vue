@@ -97,6 +97,8 @@
 <script>
 import LocaleSwitcher from './LocaleSwitcher/Index'
 
+import '@/assets/scss/home.scss'
+
 export default {
   name: 'Home',
 
