@@ -36,6 +36,8 @@
 <script>
 import Link from './Link'
 
+import '@/assets/scss/locale-switcher.scss';
+
 export default {
   components: {
     Link
