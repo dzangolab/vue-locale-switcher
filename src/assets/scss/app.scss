@@ -22,7 +22,7 @@ main {
         flex: 1;
       }
 
-      .locale-switcher {
+      .ls {
         display: block;
         flex: 0;
         width: 100%;
@@ -38,7 +38,7 @@ main {
         flex-direction: row;
         justify-content: space-between;
 
-        .locale-switcher {
+        .ls {
           ul.dropdown-menu {
             position: absolute;
             width: auto;
