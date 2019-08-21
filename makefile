@@ -1,4 +1,4 @@
-build-bundle:
+build:
 	@printf "\033[0;32m>>> Building component for production\033[0m\n"
 	yarn build-bundle
 
