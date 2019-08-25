@@ -38,7 +38,7 @@ main {
         justify-content: space-between;
 
         .ls {
-          ul.dropdown-menu {
+          &__dropdown {
             position: absolute;
             width: auto;
           }

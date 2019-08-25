@@ -17,6 +17,7 @@ $ls-text-color: rgba(0, 0, 0, 1) !default;
 
     @media (min-width: 992px) {
       display: block;
+      text-align: right;
     }
 
     &:hover {
