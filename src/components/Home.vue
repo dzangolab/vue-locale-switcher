@@ -122,16 +122,7 @@ export default {
   data () {
     return {
       expanded: false,
-      locales: [
-        {
-          code: 'en',
-          name: 'English'
-        },
-        {
-          code: 'fr',
-          name: 'Français'
-        }
-      ]
+      locales: 'en, English,fr,Français'
     }
   },
 

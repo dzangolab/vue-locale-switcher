@@ -1,6 +1,7 @@
 <template>
   <div
-    class="ls">
+    class="ls"
+    data-id="dzangolab-locale-switcher">
     <a
       @mouseover="expanded = true"
       @click="expanded = !expanded"
@@ -26,7 +27,7 @@
         :key="l.code"
         :mode="mode"
         :theme="theme"
-        v-for="l in locales"
+        v-for="l in getLocales()"
         role="menuitem"
       />
     </ul>
@@ -74,6 +75,27 @@ export default {
       }
 
       return cls
+    },
+
+    langs () {
+      switch (typeof this.locales) {
+        case 'string' :
+          let locales = []
+          let tokens = this.locales.split(',')
+        
+          for (let i = 0; i < tokens.length; i++) {
+            locales.push({
+              code: tokens[i].trim(),
+              name: tokens[++i].trim()
+            })
+          }
+
+          return locales
+
+        case 'array' :
+        default:
+          return this.locales
+      }    
     }
   },
 
@@ -86,6 +108,27 @@ export default {
   methods: {
     onLocaleChanged (locale) {
       this.$emit('locale-switcher:localeChanged', locale)
+    },
+
+    getLocales () {
+      switch (typeof this.locales) {
+        case 'string' :
+          let locales = []
+          let tokens = this.locales.split(',')
+        
+          for (let i = 0; i < tokens.length; i++) {
+            locales.push({
+              code: tokens[i].trim(),
+              name: tokens[++i].trim()
+            })
+          }
+
+          return locales
+
+        case 'array' :
+        default:
+          return this.locales
+      }
     }
   },
 
@@ -98,7 +141,7 @@ export default {
     },
     locales: {
       required: true,
-      type: Array
+      type: [Array, String]
     },
     mode: {
       default: 'pwa',
