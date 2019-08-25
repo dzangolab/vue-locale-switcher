@@ -75,27 +75,6 @@ export default {
       }
 
       return cls
-    },
-
-    langs () {
-      switch (typeof this.locales) {
-        case 'string' :
-          let locales = []
-          let tokens = this.locales.split(',')
-        
-          for (let i = 0; i < tokens.length; i++) {
-            locales.push({
-              code: tokens[i].trim(),
-              name: tokens[++i].trim()
-            })
-          }
-
-          return locales
-
-        case 'array' :
-        default:
-          return this.locales
-      }    
     }
   },
 
