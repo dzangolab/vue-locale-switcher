@@ -37,7 +37,7 @@
 <script>
 import Link from './Link'
 
-import '@/assets/scss/locale-switcher.scss';
+import '@/assets/scss/locale-switcher.scss'
 
 export default {
   components: {
@@ -94,7 +94,7 @@ export default {
         case 'string' :
           let locales = []
           let tokens = this.locales.split(',')
-        
+
           for (let i = 0; i < tokens.length; i++) {
             locales.push({
               code: tokens[i].trim(),
