@@ -80,7 +80,7 @@ export default {
         this.$emit('localeChanged', this.locale)
 
         if (this.pwa) {
-          this.$router.push(this.href)
+          this.$router.push(this.href).catch(err => {})
         }
       }
     }
