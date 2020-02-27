@@ -57,8 +57,14 @@ export default {
   },
 
   methods: {
+    getCurrentRoute () {
+      return this.$router.options.routes.find(route => {
+        return this.$route.path === route.path
+      })
+    },
+
     getRouteForLocale () {
-      let name = this.$route.name
+      let name = this.getCurrentRoute().name
 
       let i = name.lastIndexOf('_')
 
