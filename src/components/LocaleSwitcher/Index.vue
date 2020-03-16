@@ -90,10 +90,12 @@ export default {
     },
 
     getLocales () {
+      const locales = []
+      let tokens = []
+
       switch (typeof this.locales) {
         case 'string' :
-          let locales = []
-          let tokens = this.locales.split(',')
+          tokens = this.locales.split(',')
 
           for (let i = 0; i < tokens.length; i++) {
             locales.push({

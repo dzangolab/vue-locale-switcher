@@ -38,7 +38,7 @@ export default {
         return 'javascript:'
       }
 
-      let route = this.getRouteForLocale()
+      const route = this.getRouteForLocale()
 
       return route.href
     },
@@ -64,11 +64,11 @@ export default {
     },
 
     getRouteForLocale () {
-      let name = this.getCurrentRoute().name
+      const name = this.getCurrentRoute().name
 
-      let i = name.lastIndexOf('_')
+      const i = name.lastIndexOf('_')
 
-      let route = name.slice(0, i) + '_' + this.locale
+      const route = name.slice(0, i) + '_' + this.locale
 
       return this.$router.resolve({
         name: route
@@ -86,7 +86,7 @@ export default {
         this.$emit('localeChanged', this.locale)
 
         if (this.pwa) {
-          this.$router.push(this.href).catch(err => {})
+          this.$router.push(this.href).catch(() => {})
         }
       }
     }

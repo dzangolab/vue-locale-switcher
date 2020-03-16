@@ -52,7 +52,7 @@ describe('Link.vue', () => {
 
     wrapper.vm.onLocaleChanged()
 
-    expect(wrapper.emitted()['localeChanged'][0]).toEqual([locale])
+    expect(wrapper.emitted().localeChanged[0]).toEqual([locale])
   })
 
   it('do not emit `localeChanged` event if element active', () => {

@@ -113,8 +113,8 @@ export default {
 
   // Because a  route has a different path for each locale, determine locale based on route
   created () {
-    let name = this.$route.name
-    let i = name.lastIndexOf('_')
+    const name = this.$route.name
+    const i = name.lastIndexOf('_')
 
     this.$i18n.locale = name.slice(i + 1)
   },
