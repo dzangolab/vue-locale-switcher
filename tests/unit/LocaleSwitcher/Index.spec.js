@@ -31,7 +31,7 @@ describe('Index.vue', () => {
   })
 
   it('renders links', () => {
-    expect(wrapper.findAll(Link).length).toBe(2)
+    expect(wrapper.findAllComponents(Link).length).toBe(2)
   })
 
   it('emits an event with locale argument', () => {

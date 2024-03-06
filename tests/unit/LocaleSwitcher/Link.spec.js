@@ -1,9 +1,6 @@
-import {createLocalVue, shallowMount} from '@vue/test-utils'
+import {shallowMount} from '@vue/test-utils'
 import Link from '@/components/LocaleSwitcher/Link.vue'
-import VueRouter from 'vue-router'
-
-const localVue = createLocalVue()
-localVue.use(VueRouter)
+import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
   {
@@ -16,8 +13,8 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   routes
 })
 
@@ -25,14 +22,15 @@ describe('Link.vue', () => {
   const label = 'English'
   const locale = 'en'
 
-  function wrapperFactory ({propsData} = {}) {
+  function wrapperFactory ({props} = {}) {
     return shallowMount(Link, {
-      localVue,
-      router,
-      propsData: {
+      global: {
+        plugins: [router]
+      },
+      props: {
         label: label,
         locale: locale,
-        ...propsData
+        ...props
       }
     })
   }
@@ -45,7 +43,7 @@ describe('Link.vue', () => {
 
   it('emits an event with locale argument if element is not active', () => {
     const wrapper = wrapperFactory({
-      propsData: {
+      props: {
         active: false
       }
     })
@@ -57,7 +55,7 @@ describe('Link.vue', () => {
 
   it('do not emit `localeChanged` event if element active', () => {
     const wrapper = wrapperFactory({
-      propsData: {
+      props: {
         active: true
       }
     })
@@ -69,7 +67,7 @@ describe('Link.vue', () => {
 
   it('generates link correctly for spa mode', () => {
     const wrapper = wrapperFactory({
-      propsData: {
+      props: {
         locale: 'fr',
         mode: 'spa'
       }
@@ -80,7 +78,7 @@ describe('Link.vue', () => {
 
   it('generates link correctly for pwa mode', () => {
     const wrapper = wrapperFactory({
-      propsData: {
+      props: {
         locale: 'fr',
         mode: 'pwa'
       }
@@ -91,7 +89,7 @@ describe('Link.vue', () => {
 
   it('generates link correctly for ssr mode', () => {
     const wrapper = wrapperFactory({
-      propsData: {
+      props: {
         locale: 'fr',
         mode: 'ssr'
       }
