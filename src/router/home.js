@@ -1,4 +1,6 @@
-const Home = () => import('@/components/Home')
+import {defineAsyncComponent} from 'vue'
+
+const Home = defineAsyncComponent(() => import('@/components/Home'))
 
 const routes = [
   {

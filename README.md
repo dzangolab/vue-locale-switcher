@@ -4,8 +4,8 @@ LocaleSwitcher component for Vue. Supports SSR apps.
 
 ## Requirements
 
-* vue.js >= 2.6
-* vue-router >= 3.0
+* vue.js >= 3.0
+* vue-router >= 4.0
 * bootstrap >= 4.3.1
 
 This component assumes that your app's route follow a naming convention. See [Route naming convention](#routenamingconvention).
@@ -33,7 +33,7 @@ import Vue from 'vue'
 import LocaleSwitcher from '@dzangolab/vue-locale-switcher'
 import '@dzangolab/vue-locale-switcher/dist/localeSwitcher.css' // import stylesheet
 
-Vue.use('LocaleSwitcher', LocaleSwitcher)
+app.use('LocaleSwitcher', LocaleSwitcher)
 ```
 
 ### Add LocaleSwitcher inside a component

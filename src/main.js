@@ -1,19 +1,17 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import {createApp} from 'vue'
+import {createI18n} from 'vue-i18n'
 import App from './App.vue'
-import {createRouter} from './router'
+import {createRoute} from './router'
 
 import '@/assets/scss/app.scss'
 
-Vue.config.productionTip = false
+const app = createApp(App)
 
 // setup router
-const router = createRouter()
+const router = createRoute()
 
 // setup i18n
-Vue.use(VueI18n)
-
-const i18n = new VueI18n({
+const i18n = createI18n({
   fallbackLocale: 'en',
   locale: 'en',
   messages: {
@@ -26,8 +24,4 @@ const i18n = new VueI18n({
   }
 })
 
-new Vue({
-  i18n,
-  router,
-  render: h => h(App)
-}).$mount('#app')
+app.use(i18n).use(router).mount('#app')
