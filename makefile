@@ -24,11 +24,11 @@ patch:
 
 publish:
 	@printf "\033[0;32m>>> Publishing package to npmjs.org\033[0m\n"
-	shipjs trigger
+	 npx shipjs trigger
 
 release:
 	@printf "\033[0;32m>>> Prepare packages for release033[0m\n"
-	shipjs prepare
+	npx shipjs prepare
 
 run:
 	@printf "\033[0;32m>>> Running local server\033[0m\n"
