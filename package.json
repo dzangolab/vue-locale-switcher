@@ -13,7 +13,8 @@
     "prepublish": "yarn run lint && yarn run test && yarn run build",
     "serve": "vue-cli-service serve",
     "test": "yarn run test:unit",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "release": "shipjs prepare"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
@@ -40,6 +41,7 @@
     "eslint-plugin-vue": "^6.0.1",
     "node-sass": "^6.0.0",
     "sass-loader": "^10.0.0",
+    "shipjs": "0.26.3",
     "vue-i18n": "^9.0.0",
     "vue-jest": "5.0.0-alpha.10"
   },
@@ -50,18 +52,9 @@
       "email": "ramesh@united-asian.com"
     }
   ],
-  "files": [
-    "dist/*",
-    "src/*",
-    "public/*",
-    "*.json",
-    "*.js"
-  ],
+  "files": ["dist/*", "src/*", "public/*", "*.json", "*.js"],
   "homepage": "https://github.com/dzangolab/vue-locale-switcher",
-  "keywords": [
-    "vuejs",
-    "i18n"
-  ],
+  "keywords": ["vuejs", "i18n"],
   "license": "MIT",
   "main": "./dist/localeSwitcher.common.js",
   "repository": "github:dzangolab/vue-locale-switcher"
