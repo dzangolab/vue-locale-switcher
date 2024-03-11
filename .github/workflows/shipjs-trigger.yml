@@ -15,6 +15,7 @@ jobs:
           ref: master
       - uses: actions/setup-node@v3
         with:
+          node-version: 16
           registry-url: "https://registry.npmjs.org"
       - run: |
           if [ -f "yarn.lock" ]; then
@@ -22,6 +23,9 @@ jobs:
           else
             npm install
           fi
+      - run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
       - run: npx shipjs trigger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
