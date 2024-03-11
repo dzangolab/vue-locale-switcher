@@ -14,10 +14,10 @@ jobs:
         name: Use node ${{ matrix.node-version }}
 
       - name: Install yarn
-        run: npm install -g yarn
+        run: node -v && npm install -g yarn
 
       - name: Install Dependencies
-        run: node -v && yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Build packages
         run: yarn build
