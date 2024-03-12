@@ -29,7 +29,6 @@ yarn add @dzangolab/vue-locale-switcher
 ``` javascript
 # main.js
 
-import Vue from 'vue'
 import LocaleSwitcher from '@dzangolab/vue-locale-switcher'
 import '@dzangolab/vue-locale-switcher/dist/localeSwitcher.css' // import stylesheet
 
