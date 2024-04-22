@@ -32,7 +32,7 @@ release:
 
 run:
 	@printf "\033[0;32m>>> Running local server\033[0m\n"
-	yarn serve
+	yarn run dev
 
 test:
 	@printf "\033[0;32m>>> Running tests\033[0m\n"
