@@ -1,15 +1,13 @@
 module.exports = {
   root: true,
   env: {
+    es2022: true,
     node: true
   },
   extends: [
     'plugin:vue/essential',
     '@vue/standard'
   ],
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
   // add your custom rules here
   rules: {
     // allow paren-less arrow functions
