@@ -21,7 +21,6 @@
     "autoprefixer": "^10.4.19",
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.0",
-    "sass": "^1.75.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
   },
@@ -37,6 +36,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "8",
     "node-sass": "^6.0.0",
+    "sass": "1.32.13",
     "shipjs": "0.26.3",
     "vite": "^2.5.4",
     "vue-i18n": "^9.0.0",
@@ -49,9 +49,18 @@
       "email": "ramesh@united-asian.com"
     }
   ],
-  "files": ["dist/*", "src/*", "public/*", "*.json", "*.js"],
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "homepage": "https://github.com/dzangolab/vue-locale-switcher",
-  "keywords": ["vuejs", "i18n"],
+  "keywords": [
+    "vuejs",
+    "i18n"
+  ],
   "license": "MIT",
   "main": "./dist/localeSwitcher.common.js",
   "repository": "github:dzangolab/vue-locale-switcher"
