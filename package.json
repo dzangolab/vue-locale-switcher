@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --target lib --name localeSwitcher ./src/components/LocaleSwitcher/Index.vue",
-    "lint": "vite lint",
-    "prepublish": "yarn run lint && yarn run test && yarn run build",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "prepublish": "yarn lint && yarn run test && yarn run build",
     "serve": "vite preview",
     "test": "yarn run test:unit",
     "test:unit": "vite test:unit",
