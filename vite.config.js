@@ -8,19 +8,9 @@ const path = require('path')
 export default defineConfig({
   build: {
     lib: {
-      entry: './src/components/LocaleSwitcher/Index.vue',
       name: 'localeSwitcher',
+      entryPoints: ['./src/components/LocaleSwitcher/Index.vue'],
       fileName: (format) => `localeSwitcher.${format}.js`
-    },
-    rollupOptions: {
-      // Make sure to externalize Vue if you're using Vue as a dependency
-      external: ['vue'],
-      output: {
-        // Provide global variables to use in your output files
-        globals: {
-          vue: 'Vue'
-        }
-      }
     }
   },
   plugins: [vue()],
