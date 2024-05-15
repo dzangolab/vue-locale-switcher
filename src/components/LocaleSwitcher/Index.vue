@@ -19,25 +19,20 @@
       :class="dropdownClass"
       tabindex="-1"
     >
-      <!-- <Link
-        @localeChanged="onLocaleChanged"
-        :active="locale === l.code"
-        :label="l.name"
-        :locale="l.code"
-        :key="l.code"
-        :mode="mode"
-        :theme="theme"
-        v-for="l in getLocales()"
-        role="menuitem"
-      /> -->
       <li
         @click.prevent="onLocaleChanged(l)"
         :key="l.code"
         v-for="l in getLocales()"
       >
         <a
-          :class="cls"
+          :class="{
+            'dropdown-item': theme === 'bootstrap',
+            'ls__item': theme === 'custom',
+            'dropdown-item active': l.code === locale && theme === 'bootstrap',
+            'ls_item ls__item--active': l.code === locale && theme === 'custom'
+          }"
           :disabled="locale === l.code ? 'disabled' : false"
+          :href="href"
           role="menuitem"
           target="_self"
         >
@@ -53,22 +48,6 @@ import '@/assets/scss/locale-switcher.scss'
 
 export default {
   computed: {
-    cls () {
-      let cls = ''
-
-      switch (this.theme) {
-        case 'bootstrap':
-          cls += 'dropdown-item' + (this.active ? ' active' : '')
-          break
-
-        case 'custom':
-          cls = 'ls__item' + (this.active ? ' ls__item--active' : '')
-          break
-      }
-
-      return cls
-    },
-
     currentLocaleClass () {
       let cls = ''
 
@@ -126,7 +105,8 @@ export default {
 
   data () {
     return {
-      expanded: false
+      expanded: false,
+      selectedLocale: this.locale
     }
   },
 
@@ -142,7 +122,7 @@ export default {
 
       const i = name.lastIndexOf('_')
 
-      const route = name.slice(0, i) + '_' + this.locale
+      const route = name.slice(0, i) + '_' + this.selectedLocale
 
       return this.$router.resolve({
         name: route
@@ -173,14 +153,16 @@ export default {
     },
 
     onLocaleChanged (locale) {
-      if (this.locale === locale.code) {
+      this.selectedLocale = locale.code
+
+      if (this.locale === this.selectedLocale) {
         return
       }
 
       if (this.ssr) {
         window.location = this.href
       } else {
-        this.$emit('locale-switcher:localeChanged', locale.code)
+        this.$emit('locale-switcher:localeChanged', this.selectedLocale)
 
         if (this.pwa) {
           this.$router.push(this.href).catch(() => {})
