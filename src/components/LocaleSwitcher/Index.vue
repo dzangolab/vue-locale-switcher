@@ -19,7 +19,7 @@
       :class="dropdownClass"
       tabindex="-1"
     >
-      <Link
+      <!-- <Link
         @localeChanged="onLocaleChanged"
         :active="locale === l.code"
         :label="l.name"
@@ -29,22 +29,47 @@
         :theme="theme"
         v-for="l in getLocales()"
         role="menuitem"
-      />
+      /> -->
+      <li
+        @click.prevent="onLocaleChanged"
+        :key="l.code"
+        v-for="l in getLocales()"
+      >
+        <a
+          :class="cls"
+          :disabled="locale === l.code ? 'disabled' : false"
+          :href="href"
+          role="menuitem"
+          target="_self"
+        >
+          {{ l.name }}
+        </a>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-import Link from './Link'
-
 import '@/assets/scss/locale-switcher.scss'
 
 export default {
-  components: {
-    Link
-  },
-
   computed: {
+    cls () {
+      let cls = ''
+
+      switch (this.theme) {
+        case 'bootstrap':
+          cls += 'dropdown-item' + (this.active ? ' active' : '')
+          break
+
+        case 'custom':
+          cls = 'ls__item' + (this.active ? ' ls__item--active' : '')
+          break
+      }
+
+      return cls
+    },
+
     currentLocaleClass () {
       let cls = ''
 
@@ -75,6 +100,28 @@ export default {
       }
 
       return cls
+    },
+
+    href () {
+      if (this.spa) {
+        return 'javascript:'
+      }
+
+      const route = this.getRouteForLocale()
+
+      return route.href
+    },
+
+    pwa () {
+      return this.mode === 'pwa'
+    },
+
+    spa () {
+      return this.mode === 'spa'
+    },
+
+    ssr () {
+      return this.mode === 'ssr'
     }
   },
 
@@ -85,8 +132,22 @@ export default {
   },
 
   methods: {
-    onLocaleChanged (locale) {
-      this.$emit('locale-switcher:localeChanged', locale)
+    getCurrentRoute () {
+      return this.$router.options.routes.find(route => {
+        return this.$route.path === route.path
+      })
+    },
+
+    getRouteForLocale () {
+      const name = this.getCurrentRoute().name
+
+      const i = name.lastIndexOf('_')
+
+      const route = name.slice(0, i) + '_' + this.locale
+
+      return this.$router.resolve({
+        name: route
+      })
     },
 
     getLocales () {
@@ -109,6 +170,22 @@ export default {
         case 'array' :
         default:
           return this.locales
+      }
+    },
+
+    onLocaleChanged () {
+      if (this.active) {
+        return
+      }
+
+      if (this.ssr) {
+        window.location = this.href
+      } else {
+        this.$emit('locale-switcher:localeChanged', this.locale)
+
+        if (this.pwa) {
+          this.$router.push(this.href).catch(() => {})
+        }
       }
     }
   },
