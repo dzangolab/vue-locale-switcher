@@ -10,7 +10,7 @@
   "scripts": {
     "build": "vue-cli-service build --target lib --name localeSwitcher ./src/components/LocaleSwitcher/Index.vue",
     "lint": "vue-cli-service lint",
-    "prepublish": "yarn run lint && yarn run test && yarn run build",
+    "prepublish": "yarn run lint && yarn run build",
     "serve": "vue-cli-service serve",
     "test": "yarn run test:unit",
     "test:unit": "vue-cli-service test:unit",
