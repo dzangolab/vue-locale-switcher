@@ -31,14 +31,13 @@
         role="menuitem"
       /> -->
       <li
-        @click.prevent="onLocaleChanged"
+        @click.prevent="onLocaleChanged(l)"
         :key="l.code"
         v-for="l in getLocales()"
       >
         <a
           :class="cls"
           :disabled="locale === l.code ? 'disabled' : false"
-          :href="href"
           role="menuitem"
           target="_self"
         >
@@ -173,15 +172,15 @@ export default {
       }
     },
 
-    onLocaleChanged () {
-      if (this.active) {
+    onLocaleChanged (locale) {
+      if (this.locale === locale.code) {
         return
       }
 
       if (this.ssr) {
         window.location = this.href
       } else {
-        this.$emit('locale-switcher:localeChanged', this.locale)
+        this.$emit('locale-switcher:localeChanged', locale.code)
 
         if (this.pwa) {
           this.$router.push(this.href).catch(() => {})
