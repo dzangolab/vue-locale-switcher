@@ -35,17 +35,15 @@
   </div>
 </template>
 
-<script>
-import Link from './Link'
+<script setup>
+import Link from './Link.vue'
+</script>
 
+<script>
 import '@/assets/scss/locale-switcher.scss'
 
 export default {
   name: 'LocaleSwitcher',
-
-  components: {
-    Link
-  },
 
   props: {
     locale: {
