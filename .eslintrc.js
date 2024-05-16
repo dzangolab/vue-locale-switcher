@@ -21,6 +21,8 @@ module.exports = {
 
     'object-curly-spacing': ['error', 'never'],
 
-    'vue/no-use-v-if-with-v-for': 0
+    'vue/no-use-v-if-with-v-for': 0,
+
+    'vue/multi-word-component-names': 'off'
   }
 }
