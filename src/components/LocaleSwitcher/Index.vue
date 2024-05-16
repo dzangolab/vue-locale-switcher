@@ -1,47 +1,79 @@
 <template>
   <div
     class="ls"
-    data-id="dzangolab-locale-switcher">
+    data-id="dzangolab-locale-switcher"
+  >
     <a
-      @mouseover="expanded = true"
-      @click="expanded = !expanded"
       :class="currentLocaleClass"
       aria-expanded="false"
       aria-haspopup="true"
       href="javascript:"
       role="button"
+      @mouseover="expanded = true"
+      @click="expanded = !expanded"
     >
       {{ locale }}
     </a>
     <ul
-      @mouseleave="expanded = false"
-      @click="expanded = false"
       :class="dropdownClass"
       tabindex="-1"
+      @mouseleave="expanded = false"
+      @click="expanded = false"
     >
       <Link
-        @localeChanged="onLocaleChanged"
+        v-for="l in getLocales()"
+        :key="l.code"
         :active="locale === l.code"
         :label="l.name"
         :locale="l.code"
-        :key="l.code"
         :mode="mode"
         :theme="theme"
-        v-for="l in getLocales()"
         role="menuitem"
+        @locale-changed="onLocaleChanged"
       />
     </ul>
   </div>
 </template>
 
-<script>
-import Link from './Link'
+<script setup>
+import Link from './Link.vue'
+</script>
 
+<script>
 import '@/assets/scss/locale-switcher.scss'
 
 export default {
-  components: {
-    Link
+  name: 'LocaleSwitcher',
+
+  props: {
+    locale: {
+      required: true,
+      type: String
+    },
+    locales: {
+      required: true,
+      type: [Array, String]
+    },
+    mode: {
+      default: 'pwa',
+      required: false,
+      type: String,
+      validator: function (value) {
+        return ['pwa', 'spa', 'ssr'].indexOf(value.toLowerCase()) !== -1
+      }
+    },
+    theme: {
+      default: 'bootstrap',
+      type: String
+    }
+  },
+
+  emits: ['locale-switcher:localeChanged'],
+
+  data () {
+    return {
+      expanded: false
+    }
   },
 
   computed: {
@@ -78,12 +110,6 @@ export default {
     }
   },
 
-  data () {
-    return {
-      expanded: false
-    }
-  },
-
   methods: {
     onLocaleChanged (locale) {
       this.$emit('locale-switcher:localeChanged', locale)
@@ -110,31 +136,6 @@ export default {
         default:
           return this.locales
       }
-    }
-  },
-
-  name: 'LocaleSwitcher',
-
-  props: {
-    locale: {
-      required: true,
-      type: String
-    },
-    locales: {
-      required: true,
-      type: [Array, String]
-    },
-    mode: {
-      default: 'pwa',
-      required: false,
-      type: String,
-      validator: function (value) {
-        return ['pwa', 'spa', 'ssr'].indexOf(value.toLowerCase()) !== -1
-      }
-    },
-    theme: {
-      default: 'bootstrap',
-      type: String
     }
   }
 }

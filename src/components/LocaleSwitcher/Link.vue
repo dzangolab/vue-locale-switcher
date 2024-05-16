@@ -9,13 +9,42 @@
       role="menuitem"
       target="_self"
     >
-     {{ label }}
+      {{ label }}
     </a>
   </li>
 </template>
 
 <script>
 export default {
+  props: {
+    active: {
+      default: false,
+      type: Boolean
+    },
+    label: {
+      required: true,
+      type: String
+    },
+    locale: {
+      required: true,
+      type: String
+    },
+    mode: {
+      default: 'pwa',
+      required: false,
+      type: String,
+      validator: function (value) {
+        return ['pwa', 'spa', 'ssr'].indexOf(value) !== -1
+      }
+    },
+    theme: {
+      default: 'bootstrap',
+      type: String
+    }
+  },
+
+  emits: ['localeChanged'],
+
   computed: {
     cls () {
       let cls = ''
@@ -89,33 +118,6 @@ export default {
           this.$router.push(this.href).catch(() => {})
         }
       }
-    }
-  },
-
-  props: {
-    active: {
-      default: false,
-      type: Boolean
-    },
-    label: {
-      required: true,
-      type: String
-    },
-    locale: {
-      required: true,
-      type: String
-    },
-    mode: {
-      default: 'pwa',
-      required: false,
-      type: String,
-      validator: function (value) {
-        return ['pwa', 'spa', 'ssr'].indexOf(value) !== -1
-      }
-    },
-    theme: {
-      default: 'bootstrap',
-      type: String
     }
   }
 }

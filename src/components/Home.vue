@@ -1,31 +1,39 @@
 <template>
   <div class="home">
     <header>
-      <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+      <nav
+        class="navbar sticky-top navbar-expand-lg navbar-light"
+        style="background-color: #e3f2fd;"
+      >
         <div class="container">
-          <a class="navbar-brand" href="#">Dzangolab - Vue Locale Switcher</a>
+          <a
+            class="navbar-brand"
+            href="#"
+          >Dzangolab - Vue Locale Switcher</a>
           <button
-            @click="expanded = !expanded"
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            aria-label="Toggle navigation"
+            @click="expanded = !expanded"
+          >
+            <span class="navbar-toggler-icon" />
           </button>
           <div
+            id="navbarSupportedContent"
             :class="expanded ? 'show' : ''"
             class="collapse navbar-collapse"
-            id="navbarSupportedContent">
+          >
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <LocaleSwitcher
-                  @locale-switcher:localeChanged="onLocaleChanged"
                   :locale="locale"
                   :locales="locales"
                   mode="pwa"
+                  @locale-switcher:locale-changed="onLocaleChanged"
                 />
               </li>
             </ul>
@@ -53,11 +61,11 @@
           </div>
 
           <LocaleSwitcher
-            @locale-switcher:localeChanged="onLocaleChanged"
             :locale="locale"
             :locales="locales"
             mode="spa"
             theme="custom"
+            @locale-switcher:locale-changed="onLocaleChanged"
           />
         </div>
       </section>
@@ -76,10 +84,10 @@
           </div>
 
           <LocaleSwitcher
-            @locale-switcher:localeChanged="onLocaleChanged"
             :locale="locale"
             :locales="locales"
             theme="custom"
+            @locale-switcher:locale-changed="onLocaleChanged"
           />
         </div>
       </section>
@@ -90,7 +98,6 @@
         <p>See navbar at the top of the page, which includes an instance of this component (in `pwa` mode).</p>
       </section>
     </main>
-
   </div>
 </template>
 
@@ -102,6 +109,13 @@ export default {
 
   components: {
     LocaleSwitcher
+  },
+
+  data () {
+    return {
+      expanded: false,
+      locales: 'en, English,fr,Français'
+    }
   },
 
   computed: {
@@ -117,13 +131,6 @@ export default {
     const i = name.lastIndexOf('_')
 
     this.$i18n.locale = name.slice(i + 1)
-  },
-
-  data () {
-    return {
-      expanded: false,
-      locales: 'en, English,fr,Français'
-    }
   },
 
   methods: {
