@@ -20,7 +20,7 @@
       tabindex="-1"
     >
       <li
-        @click.prevent="onLocaleChanged(l)"
+        @click.prevent="onLocaleChanged(l.code)"
         :key="l.code"
         v-for="l in getLocales()"
       >
@@ -33,6 +33,7 @@
           }"
           :disabled="locale === l.code ? 'disabled' : false"
           :href="href"
+          data-test-id="locale"
           role="menuitem"
           target="_self"
         >
@@ -153,7 +154,7 @@ export default {
     },
 
     onLocaleChanged (locale) {
-      this.selectedLocale = locale.code
+      this.selectedLocale = locale
 
       if (this.locale === this.selectedLocale) {
         return
