@@ -21,10 +21,10 @@
       @click="expanded = false"
     >
       <Link
+        v-for="l in getLocales()"
         :key="l.code"
         :active="locale === l.code"
         :label="l.name"
-        v-for="l in getLocales()"
         :locale="l.code"
         :mode="mode"
         :theme="theme"
@@ -69,6 +69,8 @@ export default {
       type: String
     }
   },
+
+  emits: ['locale-switcher:localeChanged'],
 
   data () {
     return {

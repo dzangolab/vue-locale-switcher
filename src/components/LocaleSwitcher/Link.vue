@@ -42,6 +42,9 @@ export default {
       type: String
     }
   },
+
+  emits: ['localeChanged'],
+
   computed: {
     cls () {
       let cls = ''
